@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import GlobalAtmosphere from "@/components/GlobalAtmosphere";
@@ -126,6 +127,11 @@ const sections = [
 
 const TermsOfService = () => {
   return (
+    <>
+      <Helmet>
+        <title>Terms of Service | Zerra Studios</title>
+        <meta name="description" content="Review Zerra Studios' terms of service governing the use of our web design, development, and marketing agency services." />
+      </Helmet>
     <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
       <GlobalAtmosphere />
       <AtmosphericBg intensity={0.8} />
@@ -165,6 +171,7 @@ const TermsOfService = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

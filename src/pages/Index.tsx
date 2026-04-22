@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
@@ -34,6 +35,11 @@ const Index = () => {
   }, []);
 
   return (
+    <>
+      <Helmet>
+        <title>Zerra Studios — Web Design &amp; Marketing Agency</title>
+        <meta name="description" content="Zerra Studios is an online marketing agency specializing in web design, web development, SEO, and conversion-focused websites. Built for businesses that want results." />
+      </Helmet>
     <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
       <GlobalAtmosphere />
       <CursorTrail />
@@ -52,6 +58,7 @@ const Index = () => {
         mode={panelMode}
       />
     </div>
+    </>
   );
 };
 

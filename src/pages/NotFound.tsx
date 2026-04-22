@@ -1,8 +1,14 @@
+import { Helmet } from "react-helmet-async";
 import GlobalAtmosphere from "@/components/GlobalAtmosphere";
 import AtmosphericBg from "@/components/AtmosphericBg";
 
 const NotFound = () => {
   return (
+    <>
+      <Helmet>
+        <title>Page Not Found | Zerra Studios</title>
+        <meta name="robots" content="noindex" />
+      </Helmet>
     <div className="relative flex min-h-screen items-center justify-center bg-background overflow-hidden">
       <GlobalAtmosphere />
       <AtmosphericBg intensity={0.8} />
@@ -14,6 +20,7 @@ const NotFound = () => {
         </a>
       </div>
     </div>
+    </>
   );
 };
 

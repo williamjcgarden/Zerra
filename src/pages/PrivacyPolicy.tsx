@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import GlobalAtmosphere from "@/components/GlobalAtmosphere";
@@ -116,6 +117,11 @@ const sections = [
 
 const PrivacyPolicy = () => {
   return (
+    <>
+      <Helmet>
+        <title>Privacy Policy | Zerra Studios</title>
+        <meta name="description" content="Read Zerra Studios' privacy policy to understand how we collect, use, and protect your personal information." />
+      </Helmet>
     <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
       <GlobalAtmosphere />
       <AtmosphericBg intensity={0.8} />
@@ -155,6 +161,7 @@ const PrivacyPolicy = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

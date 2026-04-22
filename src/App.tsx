@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import { LazyMotion, domAnimation } from "framer-motion";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
@@ -11,6 +12,7 @@ const TermsOfService = lazy(() => import("./pages/TermsOfService.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 
 const App = () => (
+  <HelmetProvider>
   <LazyMotion features={domAnimation}>
     <TooltipProvider>
       <Toaster />
@@ -26,6 +28,7 @@ const App = () => (
       </BrowserRouter>
     </TooltipProvider>
   </LazyMotion>
+  </HelmetProvider>
 );
 
 export default App;
