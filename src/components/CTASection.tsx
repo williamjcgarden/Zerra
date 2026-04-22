@@ -42,7 +42,7 @@ const CTASection = () => {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
-          <a href="#booking" className="btn-gold text-sm inline-block min-h-[44px] leading-[44px] px-10 py-0 md:px-8 md:py-4 md:leading-normal md:min-h-0">Book a Call</a>
+          <a href="#contact" className="btn-gold text-sm inline-block min-h-[44px] leading-[44px] px-10 py-0 md:px-8 md:py-4 md:leading-normal md:min-h-0">Get a Quote</a>
         </motion.div>
       </motion.div>
     </section>

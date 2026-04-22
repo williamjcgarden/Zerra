@@ -69,7 +69,6 @@ const HeroSection = () => {
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <a href="#contact" className="btn-gold">Get a Quote</a>
-          <a href="#booking" className="btn-outline">Book a Call</a>
         </motion.div>
       </motion.div>
     </section>
