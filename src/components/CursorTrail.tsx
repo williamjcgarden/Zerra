@@ -15,6 +15,11 @@ const CursorTrail = () => {
   const visible = useRef(false);
 
   useEffect(() => {
+    // No cursor trail on touch/mobile/tablet — desktop only (≥1024px, non-touch)
+    const isTouch = window.matchMedia("(pointer: coarse)").matches;
+    const isSmallScreen = window.innerWidth < 1024;
+    if (isTouch || isSmallScreen) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -159,7 +164,7 @@ const CursorTrail = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 z-[9999] pointer-events-none"
+      className="fixed inset-0 z-[9999] pointer-events-none hidden lg:block"
       aria-hidden="true"
     />
   );
