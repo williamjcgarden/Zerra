@@ -17,7 +17,7 @@ const services = [
   },
   {
     icon: Search,
-    title: "SEO Optimization",
+    title: "Search Engine Optimization (SEO)",
     description: "Rank for the searches that matter. We build sustainable organic traffic that keeps compounding month after month.",
   },
   {
