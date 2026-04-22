@@ -35,21 +35,24 @@ const WhyZerraSection = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
           {differentiators.map((item, i) => (
-            <ScanOverlay key={item.title} className={`rounded-xl ${i === 4 ? "sm:col-span-2 sm:max-w-xs sm:mx-auto lg:col-span-1 lg:max-w-none" : ""}`}>
-              <motion.div
-                initial={{ opacity: 0, y: 35, scale: 0.96 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.55, delay: i * 0.08, ease: [0.25, 0.46, 0.45, 0.94] }}
-                whileHover={{ y: -8, scale: 1.05, transition: { duration: 0.15, ease: "easeOut" } }}
-                className="text-center p-6 md:p-8 rounded-xl border border-border/50 hover:border-foreground/20 transition-all duration-150 ease-out group hover:shadow-[0_0_30px_rgba(255,255,255,0.08)]"
-                style={{ perspective: "800px" }}
-              >
-                <item.icon className="w-6 h-6 text-foreground/60 mx-auto mb-4 group-hover:scale-130 group-hover:text-foreground group-hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] transition-all duration-150 ease-out" />
-                <h3 className="font-semibold text-sm mb-2">{item.title}</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">{item.description}</p>
-              </motion.div>
-            </ScanOverlay>
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 35, scale: 0.96 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.55, delay: i * 0.08, ease: [0.25, 0.46, 0.45, 0.94] }}
+              whileHover={{ y: -8, scale: 1.05, boxShadow: "inset 0 0 0 1px hsl(0 0% 100% / 0.35), 0 0 30px rgba(255,255,255,0.08)", transition: { duration: 0.15, ease: "easeOut" } }}
+              className={`rounded-xl transition-all duration-150 ease-out group ${i === 4 ? "sm:col-span-2 sm:max-w-xs sm:mx-auto lg:col-span-1 lg:max-w-none" : ""}`}
+              style={{ boxShadow: "inset 0 0 0 1px hsl(0 0% 100% / 0.12)" }}
+            >
+              <ScanOverlay className="rounded-xl">
+                <div className="text-center p-6 md:p-8">
+                  <item.icon className="w-6 h-6 text-foreground/60 mx-auto mb-4 group-hover:scale-130 group-hover:text-foreground group-hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.5)] transition-all duration-150 ease-out" />
+                  <h3 className="font-semibold text-sm mb-2">{item.title}</h3>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{item.description}</p>
+                </div>
+              </ScanOverlay>
+            </motion.div>
           ))}
         </div>
       </div>

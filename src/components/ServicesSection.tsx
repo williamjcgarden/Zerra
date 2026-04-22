@@ -56,7 +56,7 @@ const ServiceCard = ({ service, i }: { service: typeof services[0]; i: number })
       className="glass-card-hover rounded-xl p-8 md:p-10 group cursor-default"
       style={{ transition: "transform 0.15s ease-out, box-shadow 0.15s ease-out" }}
     >
-      <service.icon className="w-8 h-8 text-foreground/70 mb-6 transition-all duration-150 ease-out group-hover:scale-125 group-hover:text-foreground group-hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.6)]" />
+      <service.icon className="w-8 h-8 text-primary mb-6 transition-all duration-150 ease-out group-hover:scale-125 group-hover:text-primary group-hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.6)]" />
       <h3 className="text-xl font-semibold mb-3 tracking-tight transition-all duration-150 ease-out group-hover:text-foreground">{service.title}</h3>
       <p className="text-muted-foreground leading-relaxed text-sm transition-colors duration-150 ease-out group-hover:text-foreground/70">{service.description}</p>
     </motion.div>
@@ -94,7 +94,7 @@ const ServicesSection = () => {
             transition={{ duration: 0.6, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="text-3xl md:text-5xl font-bold tracking-tight"
           >
-            Services built for <span className="text-gradient-silver">growth</span>
+            Services built for <span className="text-primary" style={{ textShadow: "0 0 15px hsl(43 72% 55% / 0.4), 0 0 45px hsl(43 72% 55% / 0.2), 0 0 80px hsl(43 72% 55% / 0.1)" }}>growth</span>
           </motion.h2>
         </motion.div>
 

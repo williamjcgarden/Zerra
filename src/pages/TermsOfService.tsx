@@ -113,7 +113,7 @@ const TermsOfService = () => (
       </div>
 
       <div className="mt-16 border-t border-border/40 pt-8">
-        <a href="/" className="text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors">
+        <a href="/" className="btn-gold inline-block">
           ← Back to Home
         </a>
       </div>

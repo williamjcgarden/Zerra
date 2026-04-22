@@ -78,7 +78,7 @@ const CursorTrail = () => {
           ctx.beginPath();
           ctx.moveTo(p0.x, p0.y);
           ctx.lineTo(p1.x, p1.y);
-          ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
+          ctx.strokeStyle = `rgba(212,165,75,${alpha})`;
           ctx.lineWidth = width;
           ctx.lineCap = "butt";
           ctx.stroke();
@@ -88,7 +88,7 @@ const CursorTrail = () => {
       // Subtle sharp head glow
       if (visible.current) {
         const grad = ctx.createRadialGradient(mouse.current.x, mouse.current.y, 0, mouse.current.x, mouse.current.y, 3);
-        grad.addColorStop(0, "rgba(255,255,255,0.25)");
+        grad.addColorStop(0, "rgba(212,165,75,0.25)");
         grad.addColorStop(1, "transparent");
         ctx.beginPath();
         ctx.arc(mouse.current.x, mouse.current.y, 3, 0, Math.PI * 2);

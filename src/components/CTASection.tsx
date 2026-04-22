@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import AtmosphericBg from "./AtmosphericBg";
 
 const CTASection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -10,17 +9,8 @@ const CTASection = () => {
   const glowScale = useTransform(scrollYProgress, [0.2, 0.6], [0.8, 1.2]);
 
   return (
-    <section ref={sectionRef} className="section-padding bg-card/50 relative overflow-hidden">
-      <AtmosphericBg intensity={1.2} />
+    <section ref={sectionRef} className="section-padding relative overflow-hidden">
 
-      {/* Ambient glow with parallax */}
-      <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[150px] opacity-15 pointer-events-none"
-        style={{
-          background: "radial-gradient(circle, hsl(38 33% 61%), transparent)",
-          scale: glowScale,
-        }}
-      />
 
       <motion.div
         className="max-w-3xl mx-auto text-center relative z-10"
@@ -35,7 +25,7 @@ const CTASection = () => {
         >
           Ready to build
           <br />
-          <span className="text-gradient-gold">something great?</span>
+          <span className="text-primary" style={{ textShadow: "0 0 15px hsl(43 72% 55% / 0.4), 0 0 45px hsl(43 72% 55% / 0.2), 0 0 80px hsl(43 72% 55% / 0.1)" }}>something great?</span>
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}

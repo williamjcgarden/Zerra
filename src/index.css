@@ -135,11 +135,11 @@
     @apply px-8 py-4 rounded-lg font-semibold text-sm tracking-wide uppercase transition-all duration-150 ease-out relative overflow-hidden;
     background: linear-gradient(
       115deg,
-      hsl(38 30% 40%) 0%,
-      hsl(38 40% 60%) 30%,
-      hsl(38 45% 72%) 50%,
-      hsl(38 40% 60%) 70%,
-      hsl(38 30% 40%) 100%
+      hsl(43 60% 38%) 0%,
+      hsl(43 72% 55%) 30%,
+      hsl(43 80% 68%) 50%,
+      hsl(43 72% 55%) 70%,
+      hsl(43 60% 38%) 100%
     );
     background-size: 200% 100%;
     animation: gold-shine 8s ease-in-out infinite;

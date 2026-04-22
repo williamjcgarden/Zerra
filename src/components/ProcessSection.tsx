@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Crosshair, Palette, Zap, Rocket } from "lucide-react";
-import AtmosphericBg from "./AtmosphericBg";
 import ScanOverlay from "./ScanOverlay";
 
 const steps = [
@@ -18,8 +17,7 @@ const ProcessSection = () => {
   const headingOpacity = useTransform(scrollYProgress, [0, 0.25], [0, 1]);
 
   return (
-    <section id="process" ref={sectionRef} className="section-padding bg-card/50 relative overflow-hidden">
-      <AtmosphericBg intensity={0.8} />
+    <section id="process" ref={sectionRef} className="section-padding relative overflow-hidden">
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
@@ -28,7 +26,7 @@ const ProcessSection = () => {
         >
           <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4">Process</p>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-            How we <span className="text-gradient-gold">deliver</span>
+            How we <span className="text-primary" style={{ textShadow: "0 0 15px hsl(43 72% 55% / 0.4), 0 0 45px hsl(43 72% 55% / 0.2), 0 0 80px hsl(43 72% 55% / 0.1)" }}>deliver</span>
           </h2>
         </motion.div>
 

@@ -21,7 +21,7 @@ const GlobalAtmosphere = () => {
           style={{
             opacity: 0.25,
             background: `
-              linear-gradient(118deg, transparent 0%, transparent 20%, rgba(255,255,255,0.02) 21.8%, rgba(255,255,255,0.18) 22.5%, rgba(255,255,255,0.02) 23.2%, transparent 25%, transparent 44%, rgba(255,255,255,0.01) 45.3%, rgba(255,255,255,0.14) 45.7%, rgba(255,255,255,0.01) 46.1%, transparent 47%, transparent 68%, rgba(255,255,255,0.02) 69.3%, rgba(255,255,255,0.16) 69.7%, rgba(255,255,255,0.02) 70.1%, transparent 71%, transparent 100%)
+              linear-gradient(118deg, transparent 0%, transparent 20%, rgba(212,165,75,0.02) 21.8%, rgba(212,165,75,0.18) 22.5%, rgba(212,165,75,0.02) 23.2%, transparent 25%, transparent 44%, rgba(212,165,75,0.01) 45.3%, rgba(212,165,75,0.14) 45.7%, rgba(212,165,75,0.01) 46.1%, transparent 47%, transparent 68%, rgba(212,165,75,0.02) 69.3%, rgba(212,165,75,0.16) 69.7%, rgba(212,165,75,0.02) 70.1%, transparent 71%, transparent 100%)
             `,
             animation: "shimmerDrift 25s ease-in-out infinite alternate",
           }}
@@ -38,7 +38,7 @@ const GlobalAtmosphere = () => {
           style={{
             opacity: 0.18,
             background: `
-              linear-gradient(62deg, transparent 0%, transparent 15%, rgba(255,255,255,0.01) 16.8%, rgba(255,255,255,0.12) 17.2%, rgba(255,255,255,0.01) 17.6%, transparent 19%, transparent 40%, rgba(255,255,255,0.01) 41.3%, rgba(255,255,255,0.15) 41.7%, rgba(255,255,255,0.01) 42.1%, transparent 43%, transparent 60%, rgba(255,255,255,0.01) 62.3%, rgba(255,255,255,0.1) 62.7%, rgba(255,255,255,0.01) 63.1%, transparent 64%, transparent 82%, rgba(255,255,255,0.02) 83.3%, rgba(255,255,255,0.16) 83.7%, rgba(255,255,255,0.02) 84.1%, transparent 85%, transparent 100%)
+              linear-gradient(62deg, transparent 0%, transparent 15%, rgba(212,165,75,0.01) 16.8%, rgba(212,165,75,0.12) 17.2%, rgba(212,165,75,0.01) 17.6%, transparent 19%, transparent 40%, rgba(212,165,75,0.01) 41.3%, rgba(212,165,75,0.15) 41.7%, rgba(212,165,75,0.01) 42.1%, transparent 43%, transparent 60%, rgba(212,165,75,0.01) 62.3%, rgba(212,165,75,0.1) 62.7%, rgba(212,165,75,0.01) 63.1%, transparent 64%, transparent 82%, rgba(212,165,75,0.02) 83.3%, rgba(212,165,75,0.16) 83.7%, rgba(212,165,75,0.02) 84.1%, transparent 85%, transparent 100%)
             `,
             animation: "shimmerDrift2 30s ease-in-out infinite alternate",
           }}
@@ -55,7 +55,7 @@ const GlobalAtmosphere = () => {
           style={{
             opacity: 0.12,
             background: `
-              linear-gradient(135deg, transparent 0%, transparent 30%, rgba(255,255,255,0.01) 34.5%, rgba(255,255,255,0.12) 35%, rgba(255,255,255,0.01) 35.5%, transparent 37%, transparent 70%, rgba(255,255,255,0.01) 74.5%, rgba(255,255,255,0.1) 75%, rgba(255,255,255,0.01) 75.5%, transparent 77%, transparent 100%)
+              linear-gradient(135deg, transparent 0%, transparent 30%, rgba(212,165,75,0.01) 34.5%, rgba(212,165,75,0.12) 35%, rgba(212,165,75,0.01) 35.5%, transparent 37%, transparent 70%, rgba(212,165,75,0.01) 74.5%, rgba(212,165,75,0.1) 75%, rgba(212,165,75,0.01) 75.5%, transparent 77%, transparent 100%)
             `,
             animation: "shimmerDrift3 35s ease-in-out infinite alternate",
           }}
@@ -80,8 +80,9 @@ const GlobalAtmosphere = () => {
         ].map((dot, i) => (
           <div
             key={i}
-            className="absolute rounded-full bg-white"
+            className="absolute rounded-full"
             style={{
+              backgroundColor: "rgba(212,165,75,1)",
               top: dot.top,
               left: dot.left,
               width: dot.size,

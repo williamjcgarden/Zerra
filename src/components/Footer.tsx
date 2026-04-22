@@ -1,10 +1,8 @@
 import { Instagram } from "lucide-react";
-import AtmosphericBg from "./AtmosphericBg";
 
 const Footer = () => {
   return (
     <footer className="border-t border-border/50 py-12 px-6 md:px-12 relative overflow-hidden">
-      <AtmosphericBg intensity={0.4} />
       <div className="max-w-7xl mx-auto flex flex-col items-center gap-6 md:flex-row md:justify-between md:gap-4 relative z-10">
         <p className="text-sm text-muted-foreground text-center">
           © {new Date().getFullYear()} Zerra Studios. All rights reserved.
