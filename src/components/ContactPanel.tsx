@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { m, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
+import { PopupButton } from "react-calendly";
 
 const baseFields = {
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -230,6 +231,19 @@ const ContactPanel = ({
                   <button type="submit" className="btn-gold w-full text-sm">
                     {ui.submitLabel}
                   </button>
+
+                  <div className="relative flex items-center gap-3 py-1">
+                    <div className="flex-1 h-px bg-border" />
+                    <span className="text-xs text-muted-foreground">or</span>
+                    <div className="flex-1 h-px bg-border" />
+                  </div>
+
+                  <PopupButton
+                    url="https://calendly.com/william-zerrastudios/30min"
+                    rootElement={document.getElementById("root") as HTMLElement}
+                    text="Schedule a 30-min Call"
+                    className="w-full rounded-lg border border-border bg-transparent px-4 py-3 text-sm font-medium text-foreground hover:border-gold/50 hover:text-gold transition-colors cursor-pointer"
+                  />
                 </form>
               )}
             </div>
