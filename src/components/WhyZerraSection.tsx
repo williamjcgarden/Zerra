@@ -39,7 +39,7 @@ const WhyZerraSection = () => {
               key={item.title}
               onMouseMove={onMouseMove}
               onMouseLeave={onMouseLeave}
-              className={`rounded-xl border border-border/50 hover:border-foreground/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.08)] cursor-default group ${i === 4 ? "sm:col-span-2 sm:max-w-xs sm:mx-auto lg:col-span-1 lg:max-w-none" : ""}`}
+              className={`rounded-xl border border-border/70 bg-white/[0.04] hover:border-foreground/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.08)] cursor-default group ${i === 4 ? "sm:col-span-2 sm:max-w-xs sm:mx-auto lg:col-span-1 lg:max-w-none" : ""}`}
               style={{ transition: "transform 0.15s ease-out, box-shadow 0.15s ease-out" }}
             >
               <ScanOverlay className="rounded-xl h-full">
