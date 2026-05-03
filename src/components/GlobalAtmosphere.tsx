@@ -66,7 +66,7 @@ const VideoAtmosphere = () => {
         ref={refB}
         className="absolute inset-0 h-full w-full object-cover"
         style={{ ...baseVideoStyle, opacity: showing === "b" ? 0.28 : 0 }}
-        muted playsInline preload="none"
+        muted playsInline preload="metadata"
       >
         <source src={ATMOSPHERE_VIDEO} type="video/mp4" />
       </video>

@@ -13,9 +13,9 @@ const CTASection = () => {
   return (
     <section ref={sectionRef} className="section-padding relative overflow-hidden">
 
-      {/* Ambient glow with parallax */}
+      {/* Ambient glow — reduced blur + no scroll-scale on mobile (GPU cost) */}
       <m.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[150px] opacity-15 pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-full blur-[80px] md:blur-[150px] opacity-15 pointer-events-none"
         style={{
           background: "radial-gradient(circle, hsl(38 33% 61%), transparent)",
           scale: glowScale,
