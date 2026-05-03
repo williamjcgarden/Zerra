@@ -11,7 +11,8 @@ const baseVideoStyle: React.CSSProperties = {
   transition: `opacity ${FADE_SECS}s ease-in-out`,
 };
 
-const GlobalAtmosphere = () => {
+// Desktop-only video atmosphere — crossfading pair for seamless loop
+const VideoAtmosphere = () => {
   const refA = useRef<HTMLVideoElement>(null);
   const refB = useRef<HTMLVideoElement>(null);
   const [showing, setShowing] = useState<"a" | "b">("a");
@@ -23,11 +24,7 @@ const GlobalAtmosphere = () => {
 
     vA.play().catch(() => {});
 
-    const tryFade = (
-      from: HTMLVideoElement,
-      to: HTMLVideoElement,
-      next: "a" | "b",
-    ) => {
+    const tryFade = (from: HTMLVideoElement, to: HTMLVideoElement, next: "a" | "b") => {
       if (crossfading.current) return;
       if (!from.duration || from.duration - from.currentTime > FADE_SECS) return;
 
@@ -48,7 +45,6 @@ const GlobalAtmosphere = () => {
 
     vA.addEventListener("timeupdate", onAUpdate);
     vB.addEventListener("timeupdate", onBUpdate);
-
     return () => {
       vA.removeEventListener("timeupdate", onAUpdate);
       vB.removeEventListener("timeupdate", onBUpdate);
@@ -56,12 +52,12 @@ const GlobalAtmosphere = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <>
       <video
         ref={refA}
         className="absolute inset-0 h-full w-full object-cover"
         style={{ ...baseVideoStyle, opacity: showing === "a" ? 0.28 : 0 }}
-        muted playsInline
+        muted playsInline preload="none"
       >
         <source src={ATMOSPHERE_VIDEO} type="video/mp4" />
       </video>
@@ -69,12 +65,51 @@ const GlobalAtmosphere = () => {
         ref={refB}
         className="absolute inset-0 h-full w-full object-cover"
         style={{ ...baseVideoStyle, opacity: showing === "b" ? 0.28 : 0 }}
-        muted playsInline
+        muted playsInline preload="none"
       >
         <source src={ATMOSPHERE_VIDEO} type="video/mp4" />
       </video>
+    </>
+  );
+};
 
-      {/* Center gold wash */}
+// Mobile/tablet fallback — pure CSS, zero network cost
+const CSSAtmosphere = () => (
+  <>
+    <div
+      className="absolute inset-0"
+      style={{
+        background:
+          "radial-gradient(ellipse at 80% 30%, rgba(223,176,58,0.10) 0%, transparent 55%), " +
+          "radial-gradient(ellipse at 20% 70%, rgba(223,176,58,0.07) 0%, transparent 50%)",
+      }}
+    />
+    <div
+      className="absolute inset-0"
+      style={{
+        background:
+          "radial-gradient(ellipse at 50% 50%, rgba(200,190,160,0.04) 0%, transparent 70%)",
+      }}
+    />
+  </>
+);
+
+const GlobalAtmosphere = () => {
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const mql = window.matchMedia("(min-width: 1024px)");
+    setIsDesktop(mql.matches);
+    const onChange = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mql.addEventListener("change", onChange);
+    return () => mql.removeEventListener("change", onChange);
+  }, []);
+
+  return (
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+      {isDesktop ? <VideoAtmosphere /> : <CSSAtmosphere />}
+
+      {/* Center gold wash — all devices */}
       <div
         className="absolute inset-0"
         style={{
