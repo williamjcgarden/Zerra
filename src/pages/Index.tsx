@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
@@ -6,10 +6,13 @@ import ServicesSection from "@/components/ServicesSection";
 import WhyZerraSection from "@/components/WhyZerraSection";
 import ProcessSection from "@/components/ProcessSection";
 import CTASection from "@/components/CTASection";
-import ContactPanel from "@/components/ContactPanel";
 import Footer from "@/components/Footer";
 import CursorTrail from "@/components/CursorTrail";
 import GlobalAtmosphere from "@/components/GlobalAtmosphere";
+
+// Lazy-load ContactPanel — pulls in react-calendly + react-hook-form + zod;
+// no reason to pay that cost until the user actually opens the panel
+const ContactPanel = lazy(() => import("@/components/ContactPanel"));
 
 type PanelMode = "quote" | "booking";
 
@@ -51,12 +54,14 @@ const Index = () => {
       <ProcessSection />
       <CTASection />
       <Footer />
-      <ContactPanel
-        key={panelMode}
-        open={contactOpen}
-        onClose={() => setContactOpen(false)}
-        mode={panelMode}
-      />
+      <Suspense fallback={null}>
+        <ContactPanel
+          key={panelMode}
+          open={contactOpen}
+          onClose={() => setContactOpen(false)}
+          mode={panelMode}
+        />
+      </Suspense>
     </div>
     </>
   );
