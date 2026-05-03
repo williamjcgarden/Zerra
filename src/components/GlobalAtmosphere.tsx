@@ -53,11 +53,12 @@ const VideoAtmosphere = () => {
 
   return (
     <>
+      {/* autoPlay + playsInline + muted = iOS Safari muted autoplay contract */}
       <video
         ref={refA}
         className="absolute inset-0 h-full w-full object-cover"
         style={{ ...baseVideoStyle, opacity: showing === "a" ? 0.28 : 0 }}
-        muted playsInline preload="none"
+        autoPlay muted playsInline preload="metadata"
       >
         <source src={ATMOSPHERE_VIDEO} type="video/mp4" />
       </video>
