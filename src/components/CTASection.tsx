@@ -52,7 +52,7 @@ const CTASection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.12, ease: [0.25, 0.46, 0.45, 0.94] }}
-          className="text-muted-foreground text-lg mb-10 max-w-xl mx-auto bg-black/30 backdrop-blur-sm rounded-xl px-5 py-3"
+          className="text-muted-foreground text-lg mb-10 max-w-xl mx-auto bg-black/8 backdrop-blur-[2px] rounded-xl px-5 py-3"
         >
           Let's build a website that works as hard as you do. Performance, clarity, and results — from day one.
         </m.p>
