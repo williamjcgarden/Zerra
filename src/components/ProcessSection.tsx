@@ -38,7 +38,7 @@ const ProcessSection = () => {
               key={step.number}
               onMouseMove={onMouseMove}
               onMouseLeave={onMouseLeave}
-              className="relative rounded-xl border border-border/70 bg-white/[0.04] hover:border-foreground/20 hover:shadow-[0_0_25px_rgba(255,255,255,0.06)] cursor-default group"
+              className="relative rounded-xl border border-border/70 bg-black/30 backdrop-blur-sm hover:border-foreground/20 hover:shadow-[0_0_25px_rgba(255,255,255,0.06)] cursor-default group"
               style={{ transition: "transform 0.15s ease-out, box-shadow 0.15s ease-out" }}
             >
               {i < steps.length - 1 && (
