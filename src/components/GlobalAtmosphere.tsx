@@ -3,15 +3,15 @@ import { useEffect, useRef, useState } from "react";
 const ATMOSPHERE_VIDEO =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260421_074215_f4339e1c-0b1a-4f60-98b2-90e3d7840cb7.mp4";
 
-const FADE_SECS = 1.5;
+const FADE_SECS = 1.2;
 
 const baseVideoStyle: React.CSSProperties = {
   mixBlendMode: "screen",
-  filter: "grayscale(100%) sepia(80%) brightness(1.1)",
+  filter: "sepia(55%) hue-rotate(15deg) brightness(1.5) saturate(1.15) contrast(1.05)",
+  transform: "translateZ(0)",
   transition: `opacity ${FADE_SECS}s ease-in-out`,
 };
 
-// Desktop-only video atmosphere — crossfading pair for seamless loop
 const VideoAtmosphere = () => {
   const refA = useRef<HTMLVideoElement>(null);
   const refB = useRef<HTMLVideoElement>(null);
@@ -53,11 +53,10 @@ const VideoAtmosphere = () => {
 
   return (
     <>
-      {/* autoPlay + playsInline + muted = iOS Safari muted autoplay contract */}
       <video
         ref={refA}
         className="absolute inset-0 h-full w-full object-cover"
-        style={{ ...baseVideoStyle, opacity: showing === "a" ? 0.28 : 0 }}
+        style={{ ...baseVideoStyle, opacity: showing === "a" ? 0.38 : 0 }}
         autoPlay muted playsInline preload="metadata"
       >
         <source src={ATMOSPHERE_VIDEO} type="video/mp4" />
@@ -65,7 +64,7 @@ const VideoAtmosphere = () => {
       <video
         ref={refB}
         className="absolute inset-0 h-full w-full object-cover"
-        style={{ ...baseVideoStyle, opacity: showing === "b" ? 0.28 : 0 }}
+        style={{ ...baseVideoStyle, opacity: showing === "b" ? 0.38 : 0 }}
         muted playsInline preload="metadata"
       >
         <source src={ATMOSPHERE_VIDEO} type="video/mp4" />
@@ -77,15 +76,6 @@ const VideoAtmosphere = () => {
 const GlobalAtmosphere = () => (
   <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
     <VideoAtmosphere />
-
-    {/* Center gold wash — all devices */}
-    <div
-      className="absolute inset-0"
-      style={{
-        background:
-          "radial-gradient(ellipse at 50% 40%, rgba(223,176,58,0.06) 0%, transparent 65%)",
-      }}
-    />
   </div>
 );
 

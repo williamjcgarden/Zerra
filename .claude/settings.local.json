@@ -4,7 +4,10 @@
       "Bash(npx tsc:*)",
       "Bash(grep:*)",
       "Bash(python3:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(npm run:*)",
+      "Bash(pkill -f \"vite\")",
+      "Bash(pkill -f \"node.*dev\")"
     ]
   }
 }
