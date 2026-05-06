@@ -1,13 +1,10 @@
 import { useRef } from "react";
 import type React from "react";
-import { m, useScroll, useTransform } from "framer-motion";
+import { m } from "framer-motion";
 
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
-  const contentY = useTransform(scrollYProgress, [0, 1], [0, 80]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
     <section
@@ -15,7 +12,7 @@ const HeroSection = () => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Content with parallax */}
-      <m.div className="relative z-10 max-w-5xl mx-auto px-6 text-center" style={{ y: contentY, opacity }}>
+      <m.div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         <m.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}

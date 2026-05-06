@@ -1,6 +1,5 @@
-import { m, useScroll, useTransform } from "framer-motion";
+import { m } from "framer-motion";
 import { Code2, Server, Search, BarChart3 } from "lucide-react";
-import { useRef } from "react";
 import type { MouseEvent } from "react";
 import { useTilt } from "@/hooks/use-tilt";
 
@@ -62,19 +61,11 @@ const ServiceCard = ({ service, i }: { service: typeof services[0]; i: number })
 };
 
 const ServicesSection = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
-  const headingY = useTransform(scrollYProgress, [0, 0.4], [40, 0]);
-  const headingOpacity = useTransform(scrollYProgress, [0, 0.25], [0, 1]);
-
   return (
-    <section id="services" ref={sectionRef} className="section-padding relative overflow-hidden">
+    <section id="services" className="section-padding relative overflow-hidden">
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <m.div
-          style={{ y: headingY, opacity: headingOpacity }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <m.p
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -93,7 +84,7 @@ const ServicesSection = () => {
           >
             Services built for <span className="text-primary" style={{ textShadow: "0 0 15px hsl(43 72% 55% / 0.4), 0 0 45px hsl(43 72% 55% / 0.2), 0 0 80px hsl(43 72% 55% / 0.1)" }}>growth</span>
           </m.h2>
-        </m.div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {services.map((service, i) => (

@@ -15,11 +15,24 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+        heading: ['Outfit', 'sans-serif'],
+        body: ['Space Grotesk', 'sans-serif'],
+        display: ['Fraunces', 'Georgia', 'serif'],
       },
       colors: {
         gold: {
           DEFAULT: "hsl(var(--gold))",
           foreground: "hsl(var(--gold-foreground))",
+          light: "hsl(var(--gold-light))",
+        },
+        brown: {
+          DEFAULT: "hsl(var(--brown))",
+          dark: "hsl(var(--brown-dark))",
+        },
+        "surface-dark": "hsl(var(--surface-dark))",
+        charcoal: {
+          DEFAULT: "hsl(var(--charcoal))",
+          foreground: "hsl(var(--charcoal-foreground))",
         },
         silver: {
           DEFAULT: "hsl(var(--silver))",

@@ -1,13 +1,13 @@
-import { useState, useEffect, lazy, Suspense } from "react";
+import { useState, useEffect, lazy, Suspense, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
 import WhyZerraSection from "@/components/WhyZerraSection";
 import ProcessSection from "@/components/ProcessSection";
+import DeferredOurWorkSection from "@/components/DeferredOurWorkSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
-import CursorTrail from "@/components/CursorTrail";
 import GlobalAtmosphere from "@/components/GlobalAtmosphere";
 
 // Lazy-load ContactPanel — pulls in react-calendly + react-hook-form + zod;
@@ -18,24 +18,38 @@ type PanelMode = "quote" | "booking";
 
 const Index = () => {
   const [contactOpen, setContactOpen] = useState(false);
+  const [contactMounted, setContactMounted] = useState(false);
   const [panelMode, setPanelMode] = useState<PanelMode>("quote");
+  const contactUnmountTimer = useRef<number | null>(null);
 
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (target.closest('a[href="#contact"]')) {
         e.preventDefault();
+        if (contactUnmountTimer.current) window.clearTimeout(contactUnmountTimer.current);
         setPanelMode("quote");
+        setContactMounted(true);
         setContactOpen(true);
       } else if (target.closest('a[href="#booking"]')) {
         e.preventDefault();
+        if (contactUnmountTimer.current) window.clearTimeout(contactUnmountTimer.current);
         setPanelMode("booking");
+        setContactMounted(true);
         setContactOpen(true);
       }
     };
     document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
+    return () => {
+      document.removeEventListener("click", handleClick);
+      if (contactUnmountTimer.current) window.clearTimeout(contactUnmountTimer.current);
+    };
   }, []);
+
+  const closeContactPanel = () => {
+    setContactOpen(false);
+    contactUnmountTimer.current = window.setTimeout(() => setContactMounted(false), 350);
+  };
 
   return (
     <>
@@ -45,23 +59,25 @@ const Index = () => {
       </Helmet>
     <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
       <GlobalAtmosphere />
-      <CursorTrail />
 
 <Navbar />
       <HeroSection />
       <ServicesSection />
       <WhyZerraSection />
       <ProcessSection />
+      <DeferredOurWorkSection />
       <CTASection />
       <Footer />
-      <Suspense fallback={null}>
-        <ContactPanel
-          key={panelMode}
-          open={contactOpen}
-          onClose={() => setContactOpen(false)}
-          mode={panelMode}
-        />
-      </Suspense>
+      {contactMounted && (
+        <Suspense fallback={null}>
+          <ContactPanel
+            key={panelMode}
+            open={contactOpen}
+            onClose={closeContactPanel}
+            mode={panelMode}
+          />
+        </Suspense>
+      )}
     </div>
     </>
   );

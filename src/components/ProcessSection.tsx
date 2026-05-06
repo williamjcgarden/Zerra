@@ -1,6 +1,5 @@
-import { useRef } from "react";
 import { useTilt } from "@/hooks/use-tilt";
-import { m, useScroll, useTransform } from "framer-motion";
+import { m } from "framer-motion";
 import { Crosshair, Palette, Zap, Rocket } from "lucide-react";
 import ScanOverlay from "./ScanOverlay";
 
@@ -12,25 +11,18 @@ const steps = [
 ];
 
 const ProcessSection = () => {
-  const sectionRef = useRef<HTMLElement>(null);
   const { onMouseMove, onMouseLeave } = useTilt();
-  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
-  const headingY = useTransform(scrollYProgress, [0, 0.35], [50, 0]);
-  const headingOpacity = useTransform(scrollYProgress, [0, 0.25], [0, 1]);
 
   return (
-    <section id="process" ref={sectionRef} className="section-padding relative overflow-hidden">
+    <section id="process" className="section-padding relative overflow-hidden">
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <m.div
-          style={{ y: headingY, opacity: headingOpacity }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4">Process</p>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
             How we <span className="text-primary" style={{ textShadow: "0 0 15px hsl(43 72% 55% / 0.4), 0 0 45px hsl(43 72% 55% / 0.2), 0 0 80px hsl(43 72% 55% / 0.1)" }}>deliver</span>
           </h2>
-        </m.div>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {steps.map((step, i) => (

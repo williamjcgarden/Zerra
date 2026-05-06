@@ -1,30 +1,21 @@
-import { useRef } from "react";
-import { m, useScroll, useTransform } from "framer-motion";
+import { m } from "framer-motion";
 
 const AVAILABILITY = "5 project slots available";
 
 const CTASection = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
-  const contentY = useTransform(scrollYProgress, [0, 0.5], [60, 0]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.35], [0, 1]);
-  const glowScale = useTransform(scrollYProgress, [0.2, 0.6], [0.8, 1.2]);
-
   return (
-    <section ref={sectionRef} className="section-padding relative overflow-hidden">
+    <section className="section-padding relative overflow-hidden">
 
       {/* Ambient glow — no blur, gradient only (blur was killing mobile GPU) */}
-      <m.div
+      <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-10 pointer-events-none"
         style={{
           background: "radial-gradient(circle, hsl(38 33% 61%), transparent 70%)",
-          scale: glowScale,
         }}
       />
 
       <m.div
         className="max-w-3xl mx-auto text-center relative z-10"
-        style={{ y: contentY, opacity: contentOpacity }}
       >
         <m.div
           initial={{ opacity: 0, y: 10 }}

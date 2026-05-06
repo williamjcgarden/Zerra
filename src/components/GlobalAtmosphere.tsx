@@ -48,6 +48,8 @@ const VideoAtmosphere = () => {
     return () => {
       vA.removeEventListener("timeupdate", onAUpdate);
       vB.removeEventListener("timeupdate", onBUpdate);
+      vA.pause();
+      vB.pause();
     };
   }, []);
 
@@ -57,7 +59,10 @@ const VideoAtmosphere = () => {
         ref={refA}
         className="absolute inset-0 h-full w-full object-cover"
         style={{ ...baseVideoStyle, opacity: showing === "a" ? 0.38 : 0 }}
-        autoPlay muted playsInline preload="metadata"
+        autoPlay
+        muted
+        playsInline
+        preload="metadata"
       >
         <source src={ATMOSPHERE_VIDEO} type="video/mp4" />
       </video>
@@ -65,7 +70,9 @@ const VideoAtmosphere = () => {
         ref={refB}
         className="absolute inset-0 h-full w-full object-cover"
         style={{ ...baseVideoStyle, opacity: showing === "b" ? 0.38 : 0 }}
-        muted playsInline preload="metadata"
+        muted
+        playsInline
+        preload="metadata"
       >
         <source src={ATMOSPHERE_VIDEO} type="video/mp4" />
       </video>

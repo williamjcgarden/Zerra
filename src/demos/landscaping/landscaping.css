@@ -1,0 +1,116 @@
+/* Landscaping demo — scoped CSS vars and custom utilities */
+
+.landscaping-demo {
+  /* Base theme vars (HSL format for Tailwind v3 compatibility) */
+  --background: 0 0% 100%;
+  --foreground: 0 3% 27%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 3% 27%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 3% 27%;
+  --primary: 145 35% 27%;
+  --primary-foreground: 90 3% 99%;
+  --secondary: 130 8% 96%;
+  --secondary-foreground: 0 3% 27%;
+  --muted: 100 5% 96%;
+  --muted-foreground: 0 3% 45%;
+  --accent: 145 45% 47%;
+  --accent-foreground: 90 3% 99%;
+  --border: 110 5% 92%;
+  --input: 110 5% 92%;
+  --ring: 145 45% 47%;
+
+  /* Landscaping custom colors */
+  --charcoal: 0 3% 27%;
+  --charcoal-foreground: 90 3% 98%;
+
+  /* Fonts */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+/* Keyframes */
+@keyframes lscape-fade-up {
+  0% { opacity: 0; transform: translateY(28px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes lscape-fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Reveal on scroll */
+.landscaping-demo .reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.landscaping-demo .reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animate utilities */
+.landscaping-demo .animate-fade-up {
+  animation: lscape-fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.landscaping-demo .animate-fade-in {
+  animation: lscape-fade-in 0.6s ease-out forwards;
+}
+
+/* Underline accent */
+.landscaping-demo .accent-underline {
+  text-decoration: none;
+  background-image: linear-gradient(hsl(145 45% 47%), hsl(145 45% 47%));
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 2px;
+  transition: background-size 0.3s ease;
+}
+.landscaping-demo .accent-underline:hover {
+  background-size: 100% 2px;
+}
+.landscaping-demo .animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Underline accent */
+.landscaping-demo .underline-accent {
+  text-decoration: none;
+  background-image: linear-gradient(hsl(145 45% 47%), hsl(145 45% 47%));
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 2px;
+  transition: background-size 0.3s ease;
+}
+.landscaping-demo .underline-accent:hover {
+  background-size: 100% 2px;
+}
+
+/* Font display class */
+.landscaping-demo .font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  font-weight: 500;
+}
+
+/* Shadows */
+.landscaping-demo .shadow-soft {
+  box-shadow: 0 6px 20px -10px hsl(0 3% 27% / 0.18);
+}
+.landscaping-demo .shadow-lift {
+  box-shadow: 0 24px 50px -24px hsl(0 3% 27% / 0.28);
+}
+.landscaping-demo .shadow-deep {
+  box-shadow: 0 40px 80px -40px hsl(145 35% 27% / 0.5);
+}
+
+.landscaping-demo {
+  background-color: hsl(0 0% 100%);
+  color: hsl(0 3% 27%);
+  min-height: 100dvh;
+}

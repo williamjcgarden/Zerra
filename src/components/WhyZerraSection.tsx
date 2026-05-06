@@ -1,5 +1,4 @@
-import { useRef } from "react";
-import { m, useScroll, useTransform } from "framer-motion";
+import { m } from "framer-motion";
 import { Zap, Shield, TrendingUp, Paintbrush, Clock } from "lucide-react";
 import ScanOverlay from "./ScanOverlay";
 import { useTilt } from "@/hooks/use-tilt";
@@ -13,25 +12,18 @@ const differentiators = [
 ];
 
 const WhyZerraSection = () => {
-  const sectionRef = useRef<HTMLElement>(null);
   const { onMouseMove, onMouseLeave } = useTilt();
-  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start end", "end start"] });
-  const headingY = useTransform(scrollYProgress, [0, 0.35], [50, 0]);
-  const headingOpacity = useTransform(scrollYProgress, [0, 0.25], [0, 1]);
 
   return (
-    <section id="why-zerra" ref={sectionRef} className="section-padding relative overflow-hidden">
+    <section id="why-zerra" className="section-padding relative overflow-hidden">
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <m.div
-          style={{ y: headingY, opacity: headingOpacity }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground mb-4">Why Zerra</p>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
             Built different<span className="text-primary">.</span>
           </h2>
-        </m.div>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
           {differentiators.map((item, i) => (
