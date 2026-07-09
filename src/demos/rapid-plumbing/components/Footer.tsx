@@ -18,7 +18,7 @@ export function Footer() {
           </div>
           <div className="mt-5 flex items-center gap-1.5">
             {Array.from({ length: 5 }).map((_, i) => (
-              <Star key={i} className="h-4 w-4 fill-[color:var(--aqua)] text-[color:var(--aqua)]" />
+              <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
             ))}
             <span className="ml-2 text-sm text-slate-300">{SITE.rating.toFixed(1)} · {SITE.reviewCount} Google reviews</span>
           </div>

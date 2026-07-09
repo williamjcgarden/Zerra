@@ -64,7 +64,7 @@ function Home() {
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-0.5">
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-[color:var(--brand)] text-[color:var(--brand)]" />
+                    <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
                   ))}
                 </div>
                 <div>
@@ -86,7 +86,7 @@ function Home() {
             <div className="mt-3 flex items-center gap-2 text-slate-2">
               <div className="flex items-center gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-[color:var(--brand)] text-[color:var(--brand)]" />
+                  <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
                 ))}
               </div>
               <span className="text-sm font-medium">5.0 Google rating · {SITE.reviewCount} reviews</span>

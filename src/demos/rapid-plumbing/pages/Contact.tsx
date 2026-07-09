@@ -93,7 +93,7 @@ function ContactPage() {
               <div className="flex items-center gap-2 text-brand">
                 <div className="flex items-center gap-0.5">
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-[color:var(--brand)] text-[color:var(--brand)]" />
+                    <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
                   ))}
                 </div>
                 <span className="text-sm font-semibold">5.0 · {SITE.reviewCount} Google reviews</span>

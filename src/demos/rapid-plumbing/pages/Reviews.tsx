@@ -1,5 +1,6 @@
 import { createFileRoute } from "../RouterCompat";
-import { Star, Phone } from "lucide-react";
+import { useState } from "react";
+import { ChevronDown, Star, Phone } from "lucide-react";
 import { PageHero } from "@/demos/rapid-plumbing/components/PageHero";
 import { CTASection } from "@/demos/rapid-plumbing/components/CTASection";
 import { ReviewCard } from "@/demos/rapid-plumbing/components/ReviewCard";
@@ -28,6 +29,9 @@ const themes = [
 ];
 
 function ReviewsPage() {
+  const [showAll, setShowAll] = useState(false);
+  const visibleReviews = showAll ? REVIEWS : REVIEWS.slice(0, 3);
+
   return (
     <>
       <PageHero eyebrow="Google reviews" title="Rated 5.0 by Comox Valley locals" subtitle={`${SITE.reviewCount} verified Google reviews and counting. Here's what our customers say.`}>
@@ -35,7 +39,7 @@ function ReviewsPage() {
           <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm ring-1 ring-white/15">
             <div className="flex items-center gap-0.5">
               {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="h-4 w-4 fill-[color:var(--aqua)] text-[color:var(--aqua)]" />
+                <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
               ))}
             </div>
             <span className="font-semibold">5.0</span>
@@ -49,13 +53,19 @@ function ReviewsPage() {
 
       <section className="container-tight py-16 md:py-20">
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {REVIEWS.map((r) => <ReviewCard key={r.name + r.date} {...r} />)}
-          {Array.from({ length: 3 }).map((_, i) => (
-            <div key={`ph-${i}`} className="flex h-full flex-col items-start justify-center rounded-2xl border border-dashed border-border bg-surface/60 p-6 text-sm text-muted-foreground">
-              More Google reviews load here as they come in.
-            </div>
-          ))}
+          {visibleReviews.map((r) => <ReviewCard key={r.name + r.date} {...r} />)}
         </div>
+        {!showAll && REVIEWS.length > 3 && (
+          <div className="mt-10 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setShowAll(true)}
+              className="inline-flex items-center gap-2 rounded-lg border border-border bg-surface px-6 py-3 text-sm font-semibold text-ink shadow-card transition hover:border-brand/40 hover:text-brand"
+            >
+              Show More Reviews <ChevronDown className="h-4 w-4" />
+            </button>
+          </div>
+        )}
       </section>
 
       <section className="bg-surface py-20">
