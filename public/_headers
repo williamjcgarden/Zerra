@@ -1,0 +1,5 @@
+/demo-sites/rapidplumbing
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/demo-sites/rapidplumbing/*
+  X-Robots-Tag: noindex, nofollow, noarchive

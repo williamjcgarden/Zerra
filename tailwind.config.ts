@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
@@ -30,6 +31,15 @@ export default {
           dark: "hsl(var(--brown-dark))",
         },
         "surface-dark": "hsl(var(--surface-dark))",
+        ink: "hsl(var(--ink))",
+        brand: {
+          DEFAULT: "hsl(var(--brand))",
+          foreground: "hsl(var(--brand-foreground))",
+          hover: "hsl(var(--brand-hover))",
+        },
+        "slate-2": "hsl(var(--slate-2))",
+        surface: "hsl(var(--surface))",
+        aqua: "hsl(var(--aqua))",
         charcoal: {
           DEFAULT: "hsl(var(--charcoal))",
           foreground: "hsl(var(--charcoal-foreground))",
@@ -87,6 +97,10 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      boxShadow: {
+        elegant: "0 30px 80px -30px hsl(var(--ink) / 0.4)",
+        card: "0 6px 24px -10px hsl(var(--ink) / 0.15)",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -133,5 +147,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate],
 } satisfies Config;

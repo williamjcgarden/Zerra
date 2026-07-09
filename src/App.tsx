@@ -14,6 +14,7 @@ const OurWork = lazy(() => import("./pages/OurWork.tsx"));
 const BarbershopDemo = lazy(() => import("./pages/demos/BarbershopDemo.tsx"));
 const LandscapingDemo = lazy(() => import("./pages/demos/LandscapingDemo.tsx"));
 const TechDemo = lazy(() => import("./pages/demos/TechDemo.tsx"));
+const RapidPlumbingDemo = lazy(() => import("./pages/demos/RapidPlumbingDemo.tsx"));
 
 const RouteFallback = () => (
   <div className="min-h-screen bg-background" />
@@ -60,6 +61,7 @@ const AnimatedRoutes = () => {
               <Route path="/our-work/barbershop-demo" element={<BarbershopDemo />} />
               <Route path="/our-work/landscaping-demo" element={<LandscapingDemo />} />
               <Route path="/our-work/tech-demo" element={<TechDemo />} />
+              <Route path="/demo-sites/rapidplumbing/*" element={<RapidPlumbingDemo />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

@@ -13,6 +13,9 @@ dist-ssr
 *.local
 .env
 
+# Local Lovable export retained as the source reference for the integrated demo.
+/rapid-plumbing/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
