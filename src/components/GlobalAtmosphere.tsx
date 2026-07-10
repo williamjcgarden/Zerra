@@ -2,8 +2,11 @@ import { useEffect, useRef, useState } from "react";
 
 const ATMOSPHERE_VIDEO =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260421_074215_f4339e1c-0b1a-4f60-98b2-90e3d7840cb7.mp4";
+const MOBILE_ATMOSPHERE_IMAGE = "/images/hero-bg-1280.webp";
 
 const FADE_SECS = 1.2;
+const MOBILE_SCROLL_FACTOR = 0.08;
+const MOBILE_MAX_OFFSET = 120;
 
 const baseVideoStyle: React.CSSProperties = {
   mixBlendMode: "screen",
@@ -80,9 +83,62 @@ const VideoAtmosphere = () => {
   );
 };
 
+const MobileImageAtmosphere = () => {
+  const imageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const image = imageRef.current;
+    if (!image) return;
+
+    let frame = 0;
+
+    const updateOffset = () => {
+      frame = 0;
+      const offset = Math.min(window.scrollY * MOBILE_SCROLL_FACTOR, MOBILE_MAX_OFFSET);
+      image.style.transform = `translate3d(0, ${offset}px, 0)`;
+    };
+
+    const requestUpdate = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(updateOffset);
+    };
+
+    updateOffset();
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
+    };
+  }, []);
+
+  return (
+    <div className="absolute left-1/2 top-[-16dvh] h-[132dvh] w-[145vw] -translate-x-1/2 overflow-hidden">
+      <div
+        ref={imageRef}
+        className="h-full w-full bg-cover bg-center will-change-transform"
+        style={{
+          backgroundImage: `url(${MOBILE_ATMOSPHERE_IMAGE})`,
+          mixBlendMode: "screen",
+          filter: "sepia(55%) hue-rotate(15deg) brightness(1.45) saturate(1.1) contrast(1.05)",
+          opacity: 0.48,
+        }}
+      />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,transparent_0%,rgba(0,0,0,0.18)_55%,rgba(0,0,0,0.55)_100%)]" />
+    </div>
+  );
+};
+
 const GlobalAtmosphere = () => (
   <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-    <VideoAtmosphere />
+    <div className="absolute inset-0 md:hidden">
+      <MobileImageAtmosphere />
+    </div>
+    <div className="absolute inset-0 hidden md:block">
+      <VideoAtmosphere />
+    </div>
   </div>
 );
 
