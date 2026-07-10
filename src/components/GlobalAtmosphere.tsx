@@ -2,9 +2,10 @@ import { useEffect, useRef, useState } from "react";
 
 const ATMOSPHERE_VIDEO =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260421_074215_f4339e1c-0b1a-4f60-98b2-90e3d7840cb7.mp4";
-const MOBILE_ATMOSPHERE_IMAGE = "/images/hero-bg-1280.webp";
+const MOBILE_ATMOSPHERE_IMAGE = "/images/orb-video-still.webp";
 
 const FADE_SECS = 1.2;
+const MOBILE_MEDIA_QUERY = "(max-width: 767px)";
 const MOBILE_SCROLL_FACTOR = 0.08;
 const MOBILE_MAX_OFFSET = 120;
 
@@ -89,6 +90,7 @@ const MobileImageAtmosphere = () => {
   useEffect(() => {
     const image = imageRef.current;
     if (!image) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     let frame = 0;
 
@@ -122,24 +124,32 @@ const MobileImageAtmosphere = () => {
         style={{
           backgroundImage: `url(${MOBILE_ATMOSPHERE_IMAGE})`,
           mixBlendMode: "screen",
-          filter: "sepia(55%) hue-rotate(15deg) brightness(1.45) saturate(1.1) contrast(1.05)",
-          opacity: 0.48,
+          filter: "sepia(55%) hue-rotate(15deg) brightness(1.5) saturate(1.15) contrast(1.05)",
+          opacity: 0.38,
         }}
       />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,transparent_0%,rgba(0,0,0,0.18)_55%,rgba(0,0,0,0.55)_100%)]" />
     </div>
   );
 };
 
-const GlobalAtmosphere = () => (
-  <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-    <div className="absolute inset-0 md:hidden">
-      <MobileImageAtmosphere />
+const GlobalAtmosphere = () => {
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== "undefined" && window.matchMedia(MOBILE_MEDIA_QUERY).matches,
+  );
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(MOBILE_MEDIA_QUERY);
+    const updateBackground = () => setIsMobile(mediaQuery.matches);
+
+    mediaQuery.addEventListener("change", updateBackground);
+    return () => mediaQuery.removeEventListener("change", updateBackground);
+  }, []);
+
+  return (
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+      {isMobile ? <MobileImageAtmosphere /> : <VideoAtmosphere />}
     </div>
-    <div className="absolute inset-0 hidden md:block">
-      <VideoAtmosphere />
-    </div>
-  </div>
-);
+  );
+};
 
 export default GlobalAtmosphere;
