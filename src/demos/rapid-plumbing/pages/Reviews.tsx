@@ -1,6 +1,6 @@
 import { createFileRoute } from "../RouterCompat";
 import { useState } from "react";
-import { ChevronDown, Star, Phone } from "lucide-react";
+import { ChevronDown, ExternalLink, Star, Phone } from "lucide-react";
 import { PageHero } from "@/demos/rapid-plumbing/components/PageHero";
 import { CTASection } from "@/demos/rapid-plumbing/components/CTASection";
 import { ReviewCard } from "@/demos/rapid-plumbing/components/ReviewCard";
@@ -53,10 +53,10 @@ function ReviewsPage() {
 
       <section className="container-tight py-16 md:py-20">
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {visibleReviews.map((r) => <ReviewCard key={r.name + r.date} {...r} />)}
+          {visibleReviews.map((r) => <ReviewCard key={r.name} {...r} />)}
         </div>
-        {!showAll && REVIEWS.length > 3 && (
-          <div className="mt-10 flex justify-center">
+        <div className="mt-10 flex flex-wrap justify-center gap-3">
+          {!showAll && REVIEWS.length > 3 && (
             <button
               type="button"
               onClick={() => setShowAll(true)}
@@ -64,8 +64,16 @@ function ReviewsPage() {
             >
               Show More Reviews <ChevronDown className="h-4 w-4" />
             </button>
-          </div>
-        )}
+          )}
+          <a
+            href={SITE.googleReviews}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-lg bg-brand px-6 py-3 text-sm font-semibold text-brand-foreground shadow-card transition hover:bg-brand-hover"
+          >
+            View All {SITE.reviewCount} Google Reviews <ExternalLink className="h-4 w-4" />
+          </a>
+        </div>
       </section>
 
       <section className="bg-surface py-20">

@@ -8,6 +8,7 @@ export const SITE = {
   area: "Comox Valley",
   rating: 5.0,
   reviewCount: 98,
+  googleReviews: "https://maps.google.com/maps?cid=15576250372192585841",
   facebook: "https://www.facebook.com/105247498867637",
   url: "https://rapidplumbingltd.ca",
 };
@@ -133,39 +134,33 @@ export const SERVICES = [
 
 export const REVIEWS = [
   {
-    name: "Jon Slater",
-    date: "2026-07-02",
-    quote:
-      "Prompt service. Jack was pleasant, respected our home, and got everything sorted quickly. Would absolutely call Rapid again.",
-  },
-  {
     name: "Ann Dean",
-    date: "2026-05-29",
+    source: "Google Review",
     quote:
-      "Great service, reliable, honest pricing! Andrew was fantastic — clear communication and quality workmanship start to finish.",
+      "Great service ,reliable, honest pricing! Andrew thought of things that made my life much easier…things I didn’t even know to ask for. Jack is amazing..works so hard and crawls into places no one should dare to tread! Thanks so much guys!",
   },
   {
-    name: "Joel Ornoy",
-    date: "2026-05-26",
+    name: "joel ornoy",
+    source: "Google Review",
     quote:
-      "Andrew is clearly a skilled and up-front guy. Explained what needed doing, gave a fair quote, and got the job done right.",
+      "Andrew is clearly a skilled and up-front guy, that you can rely on to get the job done and also give you amazing advice, even if it costs him. He pointed out cost/cutting tips that would save me a lot of money, Definitely rate him 10/10, after having done extensive research on local plumbers and highly appreciate his honesty, that sets him apart from all the others. Thanks, Andrew!!",
   },
   {
-    name: "Homeowner, Courtenay",
-    date: "2026-04-18",
+    name: "Brittany Peters",
+    source: "Google Review",
     quote:
-      "Booked a hot water tank swap in the morning, hot water back by afternoon. Clean, respectful, professional.",
+      "Amazing service. I can't recommend them enough. They went above and beyond to get a chaotic job done and helped us all along the way. These guys are pros!",
   },
   {
-    name: "Local Builder",
-    date: "2026-03-11",
+    name: "Karyn Ruel",
+    source: "Google Review",
     quote:
-      "We use Rapid for our custom builds. On time, on budget, and inspection-ready every time.",
+      "Andrew and Jack are awesome! They are fast, efficient, knowledgeable and great to deal with! I wouldn't hesitate to get them for any of our plumbing needs in future.",
   },
   {
-    name: "Comox Resident",
-    date: "2026-02-02",
+    name: "Derek Rice",
+    source: "Google Review",
     quote:
-      "Gas fireplace install went perfectly. Great crew, great result.",
+      "It was a small plumbing job, but it was something that had been bothering me for a long time. Rapid got me fixed within 2 days! Awesome service! Thank you Rapid Team!",
   },
 ];
