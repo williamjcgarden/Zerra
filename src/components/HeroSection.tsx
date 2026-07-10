@@ -42,7 +42,12 @@ const HeroSection = () => {
         >
           <a href="#contact" className="btn-gold">Get a Quote</a>
         </m.div>
-        <p className="text-xs text-muted-foreground mt-4 tracking-wide">Free consultation · No obligation · Results in 2–4 weeks</p>
+        <p
+          className="text-xs text-white/60 mt-4 tracking-wide"
+          style={{ textShadow: "0 1px 2px rgba(0, 0, 0, 0.85), 0 2px 8px rgba(0, 0, 0, 0.5)" }}
+        >
+          Free consultation · No obligation · Results in 2–4 weeks
+        </p>
       </m.div>
     </section>
   );
