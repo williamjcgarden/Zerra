@@ -26,8 +26,10 @@ const HeroSection = () => {
             <br />
             <span className="text-primary" style={{ textShadow: "0 0 15px hsl(43 72% 55% / 0.4), 0 0 45px hsl(43 72% 55% / 0.2), 0 0 80px hsl(43 72% 55% / 0.1)" }}>drive revenue</span>
           </h1>
-          <p className="w-fit max-w-2xl mx-auto mb-12 rounded-md bg-black/35 px-4 py-3 text-lg leading-relaxed text-white/85 shadow-[0_4px_24px_rgba(0,0,0,0.2)] backdrop-blur-[4px] md:text-xl">
-            We design and build conversion-focused websites for ambitious businesses — fast, beautiful, and built to rank.
+          <p className="max-w-2xl mx-auto mb-12 text-lg leading-[1.9] text-white/85 md:text-xl md:leading-[1.85]">
+            <span className="box-decoration-clone rounded-md bg-black/25 px-2 py-1 shadow-[0_2px_14px_rgba(0,0,0,0.15)] backdrop-blur-[3px]">
+              We design and build conversion-focused websites for ambitious businesses — fast, beautiful, and built to rank.
+            </span>
           </p>
         </m.div>
 
