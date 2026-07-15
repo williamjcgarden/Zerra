@@ -1,5 +1,14 @@
-import { Navigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-const OurWork = () => <Navigate to="/#our-work" replace />;
+const OurWork = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate("/#our-work", { replace: true });
+  }, [navigate]);
+
+  return null;
+};
 
 export default OurWork;

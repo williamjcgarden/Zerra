@@ -5,7 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npm run build:client && npm run build:ssg && npm run prerender",
+    "build:client": "vite build",
+    "build:ssg": "vite build --config vite.ssg.config.ts",
+    "prerender": "node scripts/prerender.mjs",
+    "verify:seo": "node scripts/verify-seo-build.mjs",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "npm run build && wrangler dev",
