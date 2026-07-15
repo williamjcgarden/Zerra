@@ -1,13 +1,21 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { cleanup, render, screen } from "@testing-library/react";
-import { afterEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { HelmetProvider } from "react-helmet-async";
 import { MemoryRouter } from "react-router-dom";
 import GlobalAtmosphere from "@/components/GlobalAtmosphere";
 import Index from "@/pages/Index";
 
-afterEach(cleanup);
+beforeEach(() => {
+  vi.spyOn(HTMLMediaElement.prototype, "play").mockResolvedValue();
+  vi.spyOn(HTMLMediaElement.prototype, "pause").mockImplementation(() => {});
+});
+
+afterEach(() => {
+  cleanup();
+  vi.restoreAllMocks();
+});
 
 describe("Phase 1 homepage SEO quick wins", () => {
   it("renders Our Work without waiting for an intersection observer", () => {
@@ -23,10 +31,14 @@ describe("Phase 1 homepage SEO quick wins", () => {
     expect(screen.getByText(/Websites tailored to/i)).toBeInTheDocument();
   });
 
-  it("renders one desktop atmosphere video", () => {
+  it("keeps the intentional two-video seamless crossfade", () => {
     const { container } = render(<GlobalAtmosphere />);
-    expect(container.querySelectorAll("video")).toHaveLength(1);
-    expect(container.querySelector("video")).toHaveAttribute("loop");
+    const videos = container.querySelectorAll("video");
+    expect(videos).toHaveLength(2);
+    expect(videos[0]).toHaveAttribute("autoplay");
+    expect(videos[0].querySelector("source")?.getAttribute("src")).toBe(
+      videos[1].querySelector("source")?.getAttribute("src"),
+    );
   });
 
   it("removes static keyword and non-canonical homepage URLs", () => {

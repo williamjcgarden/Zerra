@@ -96,7 +96,7 @@ The existing Rapid Plumbing path-specific robot headers will remain in addition 
 
 ## Desktop Atmosphere Video
 
-Replace the two-video crossfade implementation with one muted, autoplaying, inline, looping video element. Preserve the current visual styling and mobile still-image behavior.
+Preserve the intentional two-video crossfade because a single looping element produces an unacceptable visible seam. Both elements use the same source and alternate opacity near the end of playback. The small performance cost is accepted to protect the homepage's visual quality.
 
 The video will remain on its existing remote host for this phase. Self-hosting is a separate performance and reliability improvement because it requires adding and deploying the media asset.
 
@@ -130,7 +130,7 @@ Automated checks will verify:
 - the homepage canonical and Open Graph URLs use the trailing slash;
 - meta keywords are absent;
 - global security headers and Rapid Plumbing robot headers are present;
-- the desktop atmosphere renders a single video element;
+- the desktop atmosphere retains its intentional two-video crossfade;
 - the Rapid Plumbing routes remain absent from the XML sitemap.
 
 Final verification will run the full test suite, lint, production build, and a local Wrangler preview. HTTP checks will confirm a known route returns 200, an unknown route returns 404, the homepage response contains meaningful body copy, and the Rapid Plumbing preview returns its robot-exclusion header.
@@ -143,7 +143,7 @@ Phase 1 is successful when:
 2. Every supported direct route loads successfully from Cloudflare static assets.
 3. An unknown URL returns HTTP 404 with the branded Not Found document.
 4. Rapid Plumbing's direct links still work but remain unlisted and excluded from indexing.
-5. The metadata, security headers, and single-video regression checks pass.
+5. The metadata, security headers, and seamless-crossfade regression checks pass.
 6. Tests, lint, and the production build complete without errors.
 
 ## References

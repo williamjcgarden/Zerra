@@ -8,6 +8,8 @@
 
 **Tech Stack:** React 18.3, React Router 6.30, Vite 8, Vitest 3, react-helmet-async, Cloudflare Workers Static Assets, TypeScript, Node.js ESM.
 
+**Post-implementation owner decision:** Preserve the original two-video desktop crossfade. A single looping video created an unacceptable visible seam, so the crossfade intentionally supersedes Task 1's single-video steps and tests.
+
 ## Global Constraints
 
 - Preserve the existing showcase content; do not add Rapid Plumbing to Our Work.
