@@ -34,10 +34,10 @@ const services = [
 ];
 
 const projects = [
-  { before: b1, after: a1, name: "Riverside Lawn Revival", tag: "Lawn + Beds", span: "row-span-2" },
+  { before: b1, after: a1, name: "Riverside Lawn Revival", tag: "Lawn + Beds", span: "md:row-span-2" },
   { before: b2, after: a2, name: "Maple Grove Patio", tag: "Hardscape" },
   { before: b3, after: a3, name: "Heritage Curb Appeal", tag: "Front Yard" },
-  { before: b4, after: a4, name: "Hillside Terrace", tag: "Retaining Walls", span: "row-span-2" },
+  { before: b4, after: a4, name: "Hillside Terrace", tag: "Retaining Walls", span: "md:row-span-2" },
 ];
 
 const team = [
@@ -190,7 +190,7 @@ function Portfolio() {
           {projects.map((p, i) => (
             <div
               key={p.name}
-              className={`reveal group relative ${p.span ?? ""} ${i % 3 === 0 ? "lg:row-span-2" : ""}`}
+              className={`portfolio-project reveal group relative ${p.span ?? ""} ${i % 3 === 0 ? "lg:row-span-2" : ""}`}
               style={{ transitionDelay: `${i * 80}ms`, transform: `translateY(${offset * (i % 2 === 0 ? 0.5 : -0.3)}px)` }}
             >
               <BeforeAfter before={p.before} after={p.after} alt={p.name} />

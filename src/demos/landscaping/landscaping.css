@@ -54,6 +54,12 @@
   transform: translateY(0);
 }
 
+@media (max-width: 767px) {
+  .landscaping-demo .portfolio-project {
+    transform: translateY(0) !important;
+  }
+}
+
 /* Animate utilities */
 .landscaping-demo .animate-fade-up {
   animation: lscape-fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
