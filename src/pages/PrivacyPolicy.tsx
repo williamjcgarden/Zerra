@@ -19,9 +19,9 @@ const sections = [
     title: "Information We Collect",
     content: (
       <ul className="list-disc list-inside space-y-2">
-        <li>Contact form submissions (name, email, message)</li>
-        <li>Usage data via analytics (page views, time on site)</li>
-        <li>Cookies and similar tracking technologies</li>
+        <li>Contact form details: name, email address, message, optional business name, and project budget when requesting a quote</li>
+        <li>Scheduling details you choose to provide through Calendly</li>
+        <li>Basic technical data, such as IP address, browser type, device type, and requested pages, processed by our hosting and content-delivery providers</li>
       </ul>
     ),
   },
@@ -30,27 +30,35 @@ const sections = [
     content: (
       <ul className="list-disc list-inside space-y-2">
         <li>To respond to your enquiries submitted via the contact form</li>
-        <li>To improve our website and services</li>
-        <li>To send updates if you have opted in</li>
+        <li>To prepare quotes and schedule consultations you request</li>
+        <li>To operate, secure, troubleshoot, and improve our website</li>
+        <li>To comply with legal obligations and protect our legitimate business interests</li>
       </ul>
     ),
   },
   {
-    title: "Data Sharing",
+    title: "Service Providers and Data Sharing",
     content: (
-      <p>
-        We do not sell your personal data. We may share it with trusted third-party service
-        providers (e.g. email services, analytics) solely to operate our website.
-      </p>
+      <div className="space-y-3">
+        <p>We do not sell your personal data. We use the following providers only as needed to operate this website:</p>
+        <ul className="list-disc list-inside space-y-2">
+          <li>Formspree processes contact form submissions and delivers them to our business email</li>
+          <li>Calendly processes scheduling information when you choose to book a consultation</li>
+          <li>Cloudflare hosts and protects the website and may process security and request logs</li>
+          <li>Google Fonts delivers website fonts and receives basic request information</li>
+          <li>Amazon CloudFront delivers selected website media and receives basic request information</li>
+        </ul>
+        <p>These providers may process information outside Canada under their own privacy and security practices.</p>
+      </div>
     ),
   },
   {
     title: "Cookies",
     content: (
       <p>
-        We use essential and analytics cookies to provide and improve our service. You can disable
-        cookies in your browser settings, though some features of the site may not function
-        correctly as a result.
+        Zerra Studios does not currently use advertising or behavioural analytics cookies on this
+        website. Third-party services may use cookies or similar technologies when you open an
+        embedded feature such as Calendly. You can control cookies through your browser settings.
       </p>
     ),
   },
@@ -58,8 +66,21 @@ const sections = [
     title: "Data Retention",
     content: (
       <p>
-        We retain contact form data for up to 12 months unless you request deletion earlier. See
-        your rights below for how to make a deletion request.
+        We retain contact form submissions and related business email for up to 12 months unless
+        the information is needed for an active client relationship, legal requirement, or dispute.
+        We then delete or anonymize it. Scheduling information is retained according to our Calendly
+        settings and the provider's policy. You may request earlier deletion using the contact details below.
+      </p>
+    ),
+  },
+  {
+    title: "Security Safeguards",
+    content: (
+      <p>
+        We use reasonable administrative and technical safeguards appropriate to the limited
+        information we collect, including encrypted HTTPS connections, restricted service access,
+        trusted service providers, and periodic review and deletion of retained submissions. No
+        internet transmission or storage system can be guaranteed completely secure.
       </p>
     ),
   },
@@ -99,17 +120,20 @@ const sections = [
     ),
   },
   {
-    title: "Contact",
+    title: "Privacy Officer and Contact",
     content: (
       <p>
-        For any privacy-related questions or concerns, please email us at{" "}
+        Zerra Studios' Privacy Officer is responsible for privacy questions, access or correction
+        requests, deletion requests, and complaints. Email{" "}
         <a
           href="mailto:contact@zerrastudios.com"
           className="text-primary underline underline-offset-4 hover:text-primary/80 transition-colors"
         >
           contact@zerrastudios.com
         </a>
-        .
+        . We will review and respond to privacy requests within a reasonable period. You may also
+        contact the Office of the Information and Privacy Commissioner for British Columbia if your
+        concern is not resolved.
       </p>
     ),
   },
@@ -135,7 +159,7 @@ const PrivacyPolicy = () => {
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
             Privacy <span className="text-gradient-gold">Policy</span>
           </h1>
-          <p className="text-sm text-muted-foreground">Last updated: April 2026</p>
+          <p className="text-sm text-muted-foreground">Last updated: August 2026</p>
         </div>
 
         <div className="space-y-10">

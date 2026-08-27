@@ -299,8 +299,11 @@ function TechFooter() {
           </ul>
         </div>
       </div>
-      <div className="border-t border-white/10 py-6 text-center text-xs text-gray-500">
-        © 2026 StartUp, Inc. All rights reserved.
+      <div className="border-t border-white/10 px-6 py-6 text-center text-xs text-gray-500">
+        <p>© 2026 StartUp, Inc. All rights reserved.</p>
+        <p className="mt-2 text-[11px] leading-relaxed text-gray-600">
+          This is a concept demo. Testimonials, businesses, statistics, and claims are fictional.
+        </p>
       </div>
     </footer>
   );

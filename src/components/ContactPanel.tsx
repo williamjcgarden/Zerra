@@ -232,6 +232,18 @@ const ContactPanel = ({
                     {ui.submitLabel}
                   </button>
 
+                  <p className="text-center text-[11px] leading-relaxed text-muted-foreground/75">
+                    By submitting, you consent to Zerra Studios and Formspree using these details to
+                    respond. See our{" "}
+                    <a
+                      href="/privacy-policy"
+                      className="underline underline-offset-2 transition-colors hover:text-foreground"
+                    >
+                      Privacy Policy
+                    </a>
+                    .
+                  </p>
+
                   <div className="relative flex items-center gap-3 py-1">
                     <div className="flex-1 h-px bg-border" />
                     <span className="text-xs text-muted-foreground">or</span>

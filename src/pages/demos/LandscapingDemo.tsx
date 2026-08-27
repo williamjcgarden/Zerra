@@ -387,6 +387,9 @@ function LandscapingFooter({ onDemoAction }: { onDemoAction: () => void }) {
           <div>© {new Date().getFullYear()} Verdant Landscaping. All rights reserved.</div>
           <div>Cultivated with care.</div>
         </div>
+        <p className="mt-3 text-[11px] leading-relaxed text-charcoal-foreground/45">
+          This is a concept demo. Testimonials, businesses, statistics, and claims are fictional.
+        </p>
       </div>
     </footer>
   );

@@ -1,6 +1,6 @@
 import { PassThrough } from "node:stream";
 import { renderToPipeableStream } from "react-dom/server";
-import { StaticRouter } from "react-router-dom/server";
+import { StaticRouter } from "react-router-dom";
 import { AppShell, type HelmetContext } from "./App";
 
 export { createDocument } from "./ssg/document";

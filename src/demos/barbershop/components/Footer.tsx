@@ -45,6 +45,9 @@ export function Footer() {
         <p className="font-body text-[#8a7560] text-xs">
           © 2026 Royal Cuts Barbershop. All rights reserved.
         </p>
+        <p className="mt-2 font-body text-[11px] leading-relaxed text-[#715f50]">
+          This is a concept demo. Testimonials, businesses, statistics, and claims are fictional.
+        </p>
       </div>
     </footer>
   );
