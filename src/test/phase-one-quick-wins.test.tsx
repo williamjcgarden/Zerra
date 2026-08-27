@@ -48,14 +48,13 @@ describe("Phase 1 homepage SEO quick wins", () => {
     expect(html).not.toContain('content="https://zerrastudios.com"');
   });
 
-  it("defines global security headers and private-preview robot headers", () => {
+  it("defines global security headers without retired preview rules", () => {
     const headers = readFileSync(resolve("public/_headers"), "utf8");
     expect(headers).toContain("Strict-Transport-Security:");
     expect(headers).toContain("X-Frame-Options: SAMEORIGIN");
     expect(headers).toContain("X-Content-Type-Options: nosniff");
     expect(headers).toContain("Referrer-Policy: strict-origin-when-cross-origin");
     expect(headers).toContain("Permissions-Policy:");
-    expect(headers).toContain("/demo-sites/rapidplumbing/*");
-    expect(headers).toContain("X-Robots-Tag: noindex, nofollow, noarchive");
+    expect(headers).not.toContain("rapidplumbing");
   });
 });

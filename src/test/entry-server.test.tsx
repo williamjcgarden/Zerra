@@ -10,9 +10,10 @@ describe("static renderer", () => {
     expect(page.headHtml).toContain("https://zerrastudios.com/");
   });
 
-  it("renders preview robots metadata", async () => {
+  it("renders a not-found page for the retired Rapid preview", async () => {
     const page = await render("/demo-sites/rapidplumbing/services");
-    expect(page.appHtml).toContain("Rapid Plumbing");
-    expect(page.headHtml).toContain("noindex, nofollow, noarchive");
+    expect(page.appHtml).toContain("Page not found");
+    expect(page.appHtml).not.toContain("Rapid Plumbing");
+    expect(page.headHtml).toContain("noindex");
   });
 });
