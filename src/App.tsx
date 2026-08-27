@@ -5,7 +5,7 @@ import { AnimatePresence, LazyMotion, domAnimation, m } from "framer-motion";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { APP_ROUTES } from "@/routes";
+import { APP_ROUTES, SECTION_ROUTE_IDS } from "@/routes";
 
 const RouteFallback = () => (
   <div className="min-h-screen bg-background" />
@@ -15,14 +15,32 @@ const ScrollToRoute = () => {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    if (hash) {
-      requestAnimationFrame(() => {
-        document.getElementById(hash.slice(1))?.scrollIntoView();
-      });
-      return;
+    const targetId = hash.slice(1) || SECTION_ROUTE_IDS[pathname as keyof typeof SECTION_ROUTE_IDS];
+
+    if (!targetId) {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      return undefined;
     }
 
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    let frameId = 0;
+    let attempts = 0;
+    const behavior = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
+      ? "auto"
+      : "smooth";
+
+    const scrollWhenReady = () => {
+      const target = document.getElementById(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior, block: "start" });
+        return;
+      }
+
+      attempts += 1;
+      if (attempts < 120) frameId = requestAnimationFrame(scrollWhenReady);
+    };
+
+    frameId = requestAnimationFrame(scrollWhenReady);
+    return () => cancelAnimationFrame(frameId);
   }, [hash, pathname]);
 
   return null;

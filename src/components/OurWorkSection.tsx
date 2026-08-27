@@ -93,7 +93,7 @@ const WorkCard = ({ project, i }: { project: Project; i: number }) => {
 
 const OurWorkSection = () => {
   return (
-    <section id="our-work" className="section-padding relative overflow-hidden">
+    <section id="our-work" className="section-padding relative scroll-mt-16 overflow-hidden md:scroll-mt-20">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16">
           <p className="text-sm uppercase tracking-[0.3em] text-gradient-gold mb-4">

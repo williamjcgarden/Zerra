@@ -10,6 +10,12 @@ describe("static renderer", () => {
     expect(page.headHtml).toContain("https://zerrastudios.com/");
   });
 
+  it("renders the homepage at clean section URLs", async () => {
+    const page = await render("/our-work");
+    expect(page.appHtml).toContain('id="our-work"');
+    expect(page.appHtml).toContain("Websites tailored to");
+  });
+
   it("renders a not-found page for the retired Rapid preview", async () => {
     const page = await render("/demo-sites/rapidplumbing/services");
     expect(page.appHtml).toContain("Page not found");

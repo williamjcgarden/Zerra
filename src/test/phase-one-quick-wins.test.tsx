@@ -19,7 +19,7 @@ afterEach(() => {
 
 describe("Phase 1 homepage SEO quick wins", () => {
   it("renders Our Work without waiting for an intersection observer", () => {
-    render(
+    const { container } = render(
       <HelmetProvider>
         <MemoryRouter>
           <Index />
@@ -29,6 +29,7 @@ describe("Phase 1 homepage SEO quick wins", () => {
 
     expect(screen.getAllByText("Our Work").length).toBeGreaterThan(0);
     expect(screen.getByText(/Websites tailored to/i)).toBeInTheDocument();
+    expect(container.querySelector('nav a[href="/our-work"]')).toBeInTheDocument();
   });
 
   it("keeps the intentional two-video seamless crossfade", () => {

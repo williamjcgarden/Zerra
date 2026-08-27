@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { m, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
-type NavLink = { label: string; href: string };
+type NavLink = { label: string; path: string; sectionId: string };
 
 const navLinks: NavLink[] = [
-  { label: "Services", href: "#services" },
-  { label: "Why Zerra", href: "#why-zerra" },
-  { label: "Process", href: "#process" },
-  { label: "Our Work", href: "#our-work" },
+  { label: "Services", path: "/services", sectionId: "services" },
+  { label: "Why Zerra", path: "/why-zerra", sectionId: "why-zerra" },
+  { label: "Process", path: "/process", sectionId: "process" },
+  { label: "Our Work", path: "/our-work", sectionId: "our-work" },
 ];
 
 const Navbar = () => {
@@ -20,17 +20,27 @@ const Navbar = () => {
     const cls = mobile
       ? "text-sm text-muted-foreground hover:text-foreground transition-colors"
       : "text-[13px] lg:text-sm text-muted-foreground hover:text-foreground transition-colors duration-300 tracking-wide whitespace-nowrap";
-    const href = location.pathname === "/" ? link.href : `/${link.href}`;
+
+    const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+      if (mobile) setMobileOpen(false);
+      if (location.pathname !== link.path) return;
+
+      event.preventDefault();
+      const behavior = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth";
+      document.getElementById(link.sectionId)?.scrollIntoView({ behavior, block: "start" });
+    };
 
     return (
-      <a
-        key={link.href}
-        href={href}
-        onClick={mobile ? () => setMobileOpen(false) : undefined}
+      <Link
+        key={link.path}
+        to={link.path}
+        onClick={handleClick}
         className={cls}
       >
         {link.label}
-      </a>
+      </Link>
     );
   };
 

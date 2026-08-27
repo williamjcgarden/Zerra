@@ -15,7 +15,7 @@ const WhyZerraSection = () => {
   const { onMouseMove, onMouseLeave } = useTilt();
 
   return (
-    <section id="why-zerra" className="section-padding relative overflow-hidden">
+    <section id="why-zerra" className="section-padding relative scroll-mt-16 overflow-hidden md:scroll-mt-20">
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16">
