@@ -3,6 +3,7 @@ import BackToZerra from "@/components/BackToZerra";
 import { AnimatedHeading } from "@/demos/tech/components/AnimatedHeading";
 import { FadeIn } from "@/demos/tech/components/FadeIn";
 import { DemoModal } from "@/demos/tech/components/DemoModal";
+import techMobileHero from "@/demos/tech/assets/tech-demo-mobile-hero.png";
 
 function Nav() {
   return (
@@ -28,8 +29,12 @@ function Nav() {
 function Hero() {
   return (
     <section id="top" className="min-h-screen bg-black text-white relative overflow-hidden">
-      <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover">
-        <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260423_084718_72a17915-4964-4059-afcd-22d59399b72e.mp4" type="video/mp4" />
+      <picture aria-hidden="true" className="tech-mobile-hero absolute inset-0 block md:hidden">
+        <source media="(max-width: 767px)" srcSet={techMobileHero} />
+        <img alt="" className="h-full w-full object-cover" decoding="async" />
+      </picture>
+      <video autoPlay loop muted playsInline preload="metadata" className="absolute inset-0 hidden h-full w-full object-cover md:block">
+        <source media="(min-width: 768px)" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260423_084718_72a17915-4964-4059-afcd-22d59399b72e.mp4" type="video/mp4" />
       </video>
       <div className="absolute inset-0 bg-black/30" />
       <div className="relative z-10 min-h-screen">

@@ -16,6 +16,14 @@ describe("static renderer", () => {
     expect(page.appHtml).toContain("Websites tailored to");
   });
 
+  it("uses an image instead of video for the Tech demo hero on mobile", async () => {
+    const page = await render("/our-work/tech-demo");
+    expect(page.appHtml).toMatch(/<picture[^>]+tech-mobile-hero/);
+    expect(page.appHtml).toMatch(/<source[^>]+media="\(max-width: 767px\)"[^>]+tech-demo-mobile-hero/);
+    expect(page.appHtml).toMatch(/<video[^>]+hidden[^>]+md:block/);
+    expect(page.appHtml).toMatch(/<source[^>]+media="\(min-width: 768px\)"/);
+  });
+
   it("renders a not-found page for the retired Rapid preview", async () => {
     const page = await render("/demo-sites/rapidplumbing/services");
     expect(page.appHtml).toContain("Page not found");
