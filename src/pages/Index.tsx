@@ -9,6 +9,7 @@ import OurWorkSection from "@/components/OurWorkSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import GlobalAtmosphere from "@/components/GlobalAtmosphere";
+import LiquidGlassFilter from "@/components/LiquidGlassFilter";
 
 // Lazy-load ContactPanel — pulls in react-calendly + react-hook-form + zod;
 // no reason to pay that cost until the user actually opens the panel
@@ -70,6 +71,7 @@ const Index = () => {
         <link rel="canonical" href="https://zerrastudios.com/" />
       </Helmet>
     <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden">
+      <LiquidGlassFilter />
       <GlobalAtmosphere />
 
 <Navbar />

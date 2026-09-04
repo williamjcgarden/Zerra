@@ -31,10 +31,10 @@ const WhyZerraSection = () => {
               key={item.title}
               onMouseMove={onMouseMove}
               onMouseLeave={onMouseLeave}
-              className={`rounded-xl border border-border/70 bg-black/30 backdrop-blur-sm hover:border-foreground/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.08)] cursor-default group ${i === 4 ? "sm:col-span-2 sm:max-w-xs sm:mx-auto lg:col-span-1 lg:max-w-none" : ""}`}
+              className={`liquid-glass-card rounded-xl border border-border/70 hover:border-foreground/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.08)] cursor-default group ${i === 4 ? "sm:col-span-2 sm:max-w-xs sm:mx-auto lg:col-span-1 lg:max-w-none" : ""}`}
               style={{ transition: "transform 0.15s ease-out, box-shadow 0.15s ease-out" }}
             >
-              <ScanOverlay className="rounded-xl h-full">
+              <ScanOverlay className="liquid-glass-content rounded-xl h-full">
                 <m.div
                   initial={{ opacity: 0, y: 35, scale: 0.96 }}
                   whileInView={{ opacity: 1, y: 0, scale: 1, transition: { duration: 0.55, delay: i * 0.08, ease: [0.25, 0.46, 0.45, 0.94] } }}

@@ -30,13 +30,13 @@ const ProcessSection = () => {
               key={step.number}
               onMouseMove={onMouseMove}
               onMouseLeave={onMouseLeave}
-              className="relative rounded-xl border border-border/70 bg-black/30 backdrop-blur-sm hover:border-foreground/20 hover:shadow-[0_0_25px_rgba(255,255,255,0.06)] cursor-default group"
+              className="liquid-glass-card relative rounded-xl border border-border/70 hover:border-foreground/20 hover:shadow-[0_0_25px_rgba(255,255,255,0.06)] cursor-default group"
               style={{ transition: "transform 0.15s ease-out, box-shadow 0.15s ease-out" }}
             >
               {i < steps.length - 1 && (
                 <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-px bg-border/50 z-10" />
               )}
-              <ScanOverlay className="rounded-xl h-full">
+              <ScanOverlay className="liquid-glass-content rounded-xl h-full">
                 <m.div
                   initial={{ opacity: 0, y: 35, scale: 0.96 }}
                   whileInView={{ opacity: 1, y: 0, scale: 1, transition: { duration: 0.55, delay: i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] } }}
