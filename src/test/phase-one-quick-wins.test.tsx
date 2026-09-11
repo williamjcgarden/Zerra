@@ -3,6 +3,7 @@ import { resolve } from "node:path";
 import { cleanup, render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { HelmetProvider } from "react-helmet-async";
+import { renderToString } from "react-dom/server";
 import { MemoryRouter } from "react-router-dom";
 import GlobalAtmosphere from "@/components/GlobalAtmosphere";
 import Index from "@/pages/Index";
@@ -30,6 +31,9 @@ describe("Phase 1 homepage SEO quick wins", () => {
     expect(screen.getAllByText("Our Work").length).toBeGreaterThan(0);
     expect(screen.getByText(/Websites tailored to/i)).toBeInTheDocument();
     expect(container.querySelector('nav a[href="/our-work"]')).toBeInTheDocument();
+    expect(container.querySelectorAll('#our-work a[href^="/our-work/"]')).toHaveLength(4);
+    expect(screen.getByText("E-commerce")).toBeInTheDocument();
+    expect(screen.getByText("Software")).toBeInTheDocument();
   });
 
   it("keeps the intentional two-video seamless crossfade", () => {
@@ -40,6 +44,12 @@ describe("Phase 1 homepage SEO quick wins", () => {
     expect(videos[0].querySelector("source")?.getAttribute("src")).toBe(
       videos[1].querySelector("source")?.getAttribute("src"),
     );
+  });
+
+  it("defers atmosphere selection until after hydration", () => {
+    const html = renderToString(<GlobalAtmosphere />);
+    expect(html).not.toContain("orb-video-still.webp");
+    expect(html).not.toContain("hf_20260421_074215");
   });
 
   it("removes static keyword and non-canonical homepage URLs", () => {

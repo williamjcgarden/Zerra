@@ -20,3 +20,7 @@ const writeRoute = async (route, outputFile = outputFileFor(route)) => {
 
 for (const route of PRERENDER_PATHS) await writeRoute(route);
 await writeRoute("/__static-404__", resolve(dist, "404.html"));
+
+// Keep the clothing concept recovery page within its own asset subtree.
+await writeRoute("/our-work/dovetail-demo/__not-found__", resolve(dist, "our-work/dovetail-demo/404.html"));
+await writeRoute("/our-work/dovetail-demo/product/__not-found__", resolve(dist, "our-work/dovetail-demo/product/404.html"));

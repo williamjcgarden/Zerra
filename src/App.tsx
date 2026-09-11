@@ -15,6 +15,8 @@ const ScrollToRoute = () => {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
+    // Dovetail resets scroll when its lazy-loaded page mounts.
+    if (pathname.startsWith("/our-work/dovetail-demo")) return;
     const targetId = hash.slice(1) || SECTION_ROUTE_IDS[pathname as keyof typeof SECTION_ROUTE_IDS];
 
     if (!targetId) {

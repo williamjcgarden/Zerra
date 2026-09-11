@@ -5,7 +5,7 @@ const ATMOSPHERE_VIDEO =
 const MOBILE_ATMOSPHERE_IMAGE = "/images/orb-video-still.webp";
 
 const FADE_SECS = 1.2;
-const MOBILE_MEDIA_QUERY = "(max-width: 767px)";
+const MOBILE_MEDIA_QUERY = "(max-width: 767px), (hover: none), (pointer: coarse)";
 const MOBILE_SCROLL_FACTOR = 0.08;
 const MOBILE_MAX_OFFSET = 120;
 
@@ -133,21 +133,20 @@ const MobileImageAtmosphere = () => {
 };
 
 const GlobalAtmosphere = () => {
-  const [isMobile, setIsMobile] = useState(
-    () => typeof window !== "undefined" && window.matchMedia(MOBILE_MEDIA_QUERY).matches,
-  );
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia(MOBILE_MEDIA_QUERY);
     const updateBackground = () => setIsMobile(mediaQuery.matches);
 
+    updateBackground();
     mediaQuery.addEventListener("change", updateBackground);
     return () => mediaQuery.removeEventListener("change", updateBackground);
   }, []);
 
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-      {isMobile ? <MobileImageAtmosphere /> : <VideoAtmosphere />}
+      {isMobile === null ? null : isMobile ? <MobileImageAtmosphere /> : <VideoAtmosphere />}
     </div>
   );
 };

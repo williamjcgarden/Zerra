@@ -14,6 +14,7 @@ type Project = {
 };
 
 const projects: Project[] = [
+  { slug: "dovetail-demo", label: "E-commerce", image: "/demos/dovetail/preview.webp", imageAlt: "Dovetail fictional clothing brand and interactive storefront" },
   {
     slug: "barbershop-demo",
     label: "Barbershops",
@@ -28,7 +29,7 @@ const projects: Project[] = [
   },
   {
     slug: "tech-demo",
-    label: "Tech/SaaS Startups",
+    label: "Software",
     image: techPreview,
     imageAlt: "StartUp SaaS homepage preview",
   },
@@ -79,9 +80,9 @@ const WorkCard = ({ project, i }: { project: Project; i: number }) => {
           loading="lazy"
           decoding="async"
         />
-        <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-150 ease-out group-hover:bg-black/35 group-hover:opacity-100">
-          <div className="flex flex-col items-center px-5 py-3 text-center">
-            <span className="max-w-[92%] pb-1 text-xl font-bold leading-[1.2] tracking-tight text-white drop-shadow-[0_0_14px_rgba(255,255,255,0.28)] md:text-2xl">
+        <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-150 ease-out group-hover:bg-black/35 group-hover:opacity-100 group-focus-visible:bg-black/35 group-focus-visible:opacity-100">
+          <div className="flex flex-col items-center px-2 py-3 text-center">
+            <span className="whitespace-nowrap pb-1 text-sm sm:text-xl font-bold leading-[1.2] tracking-tight text-white drop-shadow-[0_0_14px_rgba(255,255,255,0.28)] md:text-2xl">
               {project.label}
             </span>
           </div>
@@ -110,7 +111,7 @@ const OurWorkSection = () => {
           </m.h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-3 gap-y-6 sm:gap-6">
           {projects.map((project, i) => (
             <WorkCard key={project.slug} project={project} i={i} />
           ))}

@@ -24,6 +24,11 @@ const Index = () => {
   const contactUnmountTimer = useRef<number | null>(null);
 
   useEffect(() => {
+    if (new URLSearchParams(window.location.search).get("enquiry") === "website") {
+      setPanelMode("quote");
+      setContactMounted(true);
+      setContactOpen(true);
+    }
     const handleClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (target.closest('a[href="#contact"]')) {
