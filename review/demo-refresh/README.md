@@ -21,7 +21,7 @@ node review/demo-refresh/startup-journey.cjs
 node review/demo-refresh/verdant-journey.cjs
 ```
 
-They cover preselection, multi-step form navigation, edit/restart, simulated completion, sample automation results and mobile navigation. They also assert that no POST or other mutation request was sent, and run axe on the result state.
+They cover preselection, multi-step form navigation, edit/restart, simulated completion, trial signup completion and mobile navigation. They also assert that no POST or other mutation request was sent, and run axe on the result state.
 
 Use the built Cloudflare runtime for acceptance. The Vite-only preview serves the source HTML marker and can log development hydration warnings that do not represent the prerendered deployment; it also does not serve the standalone Royal Cuts directory entry.
 
@@ -29,4 +29,4 @@ The audit records existing color-contrast findings on the preserved Verdant home
 
 `node review/demo-refresh/navigation.cjs` compares all four disclosure bars with Dovetail, tests hover/keyboard expansion and return navigation, and verifies brand-first titles, a single demo favicon and restoration of Zerra's icons at 1440/768/390/320px.
 
-StartUp’s guided flow now follows its product promise: sample tool stack → plain-English outcome → trigger/summary/Slack-message preview. The journey checker covers all four prepared outcomes, edit/back/restart and direct preview/plan links.
+StartUp’s signup flow follows pricing → selected plan → workflows and seats → trial review → final demo message and Zerra enquiry link. The journey checker covers all three plans, seat validation, edit/back, query reload, first-click pricing and lazy loading.

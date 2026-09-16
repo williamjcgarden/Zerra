@@ -40,53 +40,64 @@
   .tech-demo .tech-setup { width: calc(100% - 40px); padding-bottom: 64px; }
   .tech-demo .tech-setup-back { margin-bottom: 24px; }
 }
-.tech-demo .tech-setup-kicker { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px; font-size:12px; color:#a5acb7; margin-bottom:26px; }
-.tech-demo .tech-setup-kicker > p { text-transform:uppercase; letter-spacing:.1em; }
-.tech-demo .tech-setup-kicker > span,.tech-demo .tech-mode-label { border:1px solid #ffffff30; border-radius:6px; padding:5px 9px; color:#d1d5db; font-size:11px; white-space:nowrap; }
+.tech-demo .tech-setup-kicker { font-size:12px; color:#a5acb7; margin-bottom:26px; text-transform:uppercase; letter-spacing:.1em; }
 .tech-demo .tech-onboarding-steps { display:flex; gap:24px; padding:0 0 28px; margin:0 0 32px; border-bottom:1px solid #ffffff25; list-style:none; }
 .tech-demo .tech-onboarding-steps li { display:flex; gap:9px; align-items:center; font-size:12px; color:#a5acb7; }
 .tech-demo .tech-onboarding-steps li > span { display:flex; align-items:center; justify-content:center; width:26px; height:26px; border:1px solid #ffffff40; border-radius:50%; flex-shrink:0; }
 .tech-demo .tech-onboarding-steps [aria-current] { color:white; }
 .tech-demo .tech-onboarding-steps [aria-current] > span { background:white; color:black; border-color:white; }
-.tech-demo .tech-demo-note { font-size:12px; line-height:1.7; color:#a5acb7; margin:-12px 0 28px; }
-.tech-demo :is(.tech-stack-options,.tech-outcome-options) { display:grid; gap:14px; border:0; padding:0; margin:0; }
-.tech-demo :is(.tech-stack-options,.tech-outcome-options) label { display:flex; align-items:flex-start; gap:16px; border:1px solid #ffffff30; border-radius:12px; padding:24px; cursor:pointer; transition:background .15s,border-color .15s; }
-.tech-demo :is(.tech-stack-options,.tech-outcome-options) label:has(input:checked) { border-color:#d1d5db; background:#ffffff08; }
-.tech-demo :is(.tech-stack-options,.tech-outcome-options) input { width:18px; height:18px; accent-color:white; margin-top:3px; flex-shrink:0; }
-.tech-demo :is(.tech-stack-options,.tech-outcome-options) strong { display:flex; align-items:center; gap:12px; font-size:17px; font-weight:500; }
-.tech-demo :is(.tech-stack-options,.tech-outcome-options) label > span > span { display:block; margin-top:8px; color:#b8bec8; line-height:1.7; font-size:14px; }
 .tech-demo .tech-primary-action { display:inline-flex; align-items:center; justify-content:center; gap:12px; background:white; color:black; border-radius:8px; padding:12px 22px; min-height:48px; font-size:14px; font-weight:500; }
 .tech-demo .tech-primary-action:hover { background:#e5e7eb; }
-.tech-demo .tech-connected-stack { display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-size:13px; margin-bottom:22px; }
-.tech-demo .tech-connected-stack > span { color:#a5acb7; margin-left:auto; font-size:12px; }
-.tech-demo .tech-workflow-preview { padding:28px; }
-.tech-demo .tech-workflow-heading { display:flex; align-items:center; justify-content:space-between; gap:16px; }
-.tech-demo .tech-workflow-request { color:#b8bec8; font-size:14px; line-height:1.8; margin:18px 0 24px; }
-.tech-demo .tech-workflow-nodes { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; list-style:none; padding:0; margin:0; }
-.tech-demo .tech-workflow-nodes li { border:1px solid #ffffff30; border-radius:8px; padding:18px; }
-.tech-demo .tech-workflow-nodes span { display:block; color:#a5acb7; font-size:11px; margin-bottom:14px; }
-.tech-demo .tech-workflow-nodes strong { display:block; font-size:14px; font-weight:500; line-height:1.6; }
-.tech-demo .tech-workflow-nodes small { display:block; color:#a5acb7; font-size:11px; margin-top:10px; }
-.tech-demo .tech-sample-event { border-block:1px solid #ffffff25; padding:18px 0; margin:24px 0; font-size:13px; }
-.tech-demo .tech-sample-event > span { color:#a5acb7; font-size:11px; }
-.tech-demo .tech-sample-event > p { margin-top:7px; }
-.tech-demo .tech-run-status { min-height:44px; display:flex; align-items:center; padding:18px 0; font-size:12px; color:#b8bec8; }
-.tech-demo .tech-message-preview { border:1px solid #ffffff30; border-radius:12px; overflow:hidden; }
-.tech-demo .tech-message-heading { display:flex; align-items:center; flex-wrap:wrap; gap:10px; padding:18px 24px; border-bottom:1px solid #ffffff25; font-size:13px; }
-.tech-demo .tech-message-heading > span { color:#a5acb7; margin-left:auto; }
-.tech-demo .tech-message-body { padding:24px; font-size:14px; }
-.tech-demo .tech-message-body strong { font-weight:600; }
-.tech-demo .tech-message-body strong > span { font-weight:400; font-size:10px; color:#a5acb7; margin-left:8px; }
-.tech-demo .tech-message-body p { margin:10px 0 18px; color:#d1d5db; line-height:1.8; }
-.tech-demo .tech-message-action { font-size:12px; color:#b8bec8; }
-.tech-demo .tech-message-caption { padding:0 24px 20px; color:#a5acb7; font-size:11px; }
+.tech-demo .tech-primary-action:disabled { opacity:.45; cursor:not-allowed; }
+.tech-demo .tech-signup-plans { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+.tech-demo .tech-signup-plan { display:flex; flex-direction:column; border:1px solid #ffffff35; border-radius:14px; padding:24px; }
+.tech-demo .tech-signup-plan h2 { font-size:20px; font-weight:500; }
+.tech-demo .tech-signup-plan > p { min-height:44px; font-size:13px; line-height:1.7; color:#b8bec8; margin:10px 0 24px; }
+.tech-demo .tech-plan-price { font-size:36px; letter-spacing:-.04em; }
+.tech-demo .tech-plan-price > span { font-size:13px; letter-spacing:normal; margin-left:6px; }
+.tech-demo .tech-signup-plan ul { list-style:none; padding:0; margin:24px 0; flex:1; }
+.tech-demo .tech-signup-plan li { display:flex; align-items:flex-start; gap:8px; font-size:12px; line-height:1.6; margin-bottom:12px; }
+.tech-demo .tech-signup-plan li svg { flex-shrink:0; margin-top:3px; }
+.tech-demo .tech-signup-plan > button { display:flex; justify-content:space-between; align-items:center; gap:8px; min-height:46px; border-radius:7px; padding:10px 12px; background:white; color:black; font-size:12px; font-weight:500; }
+.tech-demo .tech-signup-plan-featured { background:white; color:black; }
+.tech-demo .tech-signup-plan-featured > p { color:#4b5563; }
+.tech-demo .tech-signup-plan-featured > button { background:black; color:white; }
+.tech-demo .tech-signup-plan-featured :focus-visible { outline-color:#111; }
+.tech-demo .tech-selected-plan { display:flex; justify-content:space-between; align-items:center; gap:16px; border-block:1px solid #ffffff25; padding:18px 0; margin-bottom:30px; }
+.tech-demo .tech-selected-plan > div { display:flex; flex-wrap:wrap; gap:16px; align-items:center; }
+.tech-demo .tech-selected-plan strong { font-size:18px; font-weight:500; }
+.tech-demo .tech-selected-plan span { color:#b8bec8; font-size:14px; }
+.tech-demo .tech-selected-plan button { min-height:44px; font-size:13px; text-decoration:underline; text-underline-offset:4px; }
+.tech-demo .tech-workflow-options { display:grid; gap:14px; border:0; padding:0; margin:0; }
+.tech-demo .tech-workflow-options legend { font-size:17px; margin-bottom:8px; }
+.tech-demo .tech-workflow-options > p { font-size:13px; color:#b8bec8; margin:0 0 10px; }
+.tech-demo .tech-workflow-options label { display:flex; align-items:flex-start; gap:14px; border:1px solid #ffffff30; border-radius:10px; padding:18px 20px; cursor:pointer; }
+.tech-demo .tech-workflow-options label:has(input:checked) { border-color:#d1d5db; background:#ffffff08; }
+.tech-demo .tech-workflow-options input { width:18px; height:18px; accent-color:white; margin-top:3px; flex-shrink:0; }
+.tech-demo .tech-workflow-options strong { display:block; font-size:15px; font-weight:500; }
+.tech-demo .tech-workflow-options label > span > span { display:block; margin-top:6px; color:#b8bec8; line-height:1.7; font-size:13px; }
+.tech-demo .tech-seat-field { margin-top:28px; }
+.tech-demo .tech-seat-field label { display:block; font-size:17px; }
+.tech-demo .tech-seat-field p { color:#b8bec8; font-size:13px; line-height:1.7; margin:8px 0 14px; }
+.tech-demo .tech-seat-field input { width:120px; max-width:100%; min-height:48px; background:#141414; color:white; border:1px solid #ffffff50; border-radius:8px; padding:10px 12px; font:inherit; }
+.tech-demo .tech-trial-review { padding:28px; }
+.tech-demo .tech-trial-review h2 { font-size:22px; margin-bottom:22px; }
+.tech-demo .tech-trial-review dl { margin:0; }
+.tech-demo .tech-trial-review dl > div { display:grid; grid-template-columns:1fr 2fr; gap:20px; border-top:1px solid #ffffff25; padding:20px 0; font-size:14px; }
+.tech-demo .tech-trial-review dt { color:#a5acb7; }
+.tech-demo .tech-trial-review dd { margin:0; }
+.tech-demo .tech-trial-review dd ul { list-style:none; padding:0; margin:0; }
+.tech-demo .tech-trial-review dd li + li { margin-top:8px; }
+.tech-demo .tech-trial-note { color:#b8bec8; font-size:12px; line-height:1.7; margin:20px 0; }
+.tech-demo .tech-demo-finish { border-top:1px solid #ffffff25; padding-top:28px; }
+.tech-demo .tech-demo-finish > p { color:#b8bec8; font-size:14px; margin-bottom:24px; }
+@media (max-width: 700px) {
+  .tech-demo .tech-signup-plans { grid-template-columns:1fr; }
+  .tech-demo .tech-signup-plan > p { min-height:0; margin-bottom:16px; }
+}
 @media (max-width: 600px) {
   .tech-demo .tech-onboarding-steps { gap:12px; justify-content:space-between; }
   .tech-demo .tech-onboarding-steps li { flex-direction:column; align-items:flex-start; gap:8px; font-size:10px; }
-  .tech-demo .tech-workflow-nodes { grid-template-columns:1fr; }
-  .tech-demo .tech-workflow-nodes li { padding:16px; }
-  .tech-demo .tech-workflow-nodes span { margin-bottom:7px; }
-  .tech-demo .tech-workflow-preview { padding:20px; }
-  .tech-demo .tech-workflow-heading { align-items:flex-start; }
-  .tech-demo :is(.tech-stack-options,.tech-outcome-options) label { padding:20px; }
+  .tech-demo .tech-trial-review { padding:20px; }
+  .tech-demo .tech-trial-review dl > div { grid-template-columns:1fr; gap:8px; }
 }

@@ -1,3 +1,4 @@
+import { plans } from "@/demos/tech/plans";
 import BackToZerra from "@/components/BackToZerra";
 import "@/components/demo-context.css";
 import "@/demos/tech/tech.css";
@@ -164,11 +165,6 @@ function HowItWorks() {
 }
 
 function Pricing() {
-  const tiers = [
-    { name: "Starter", price: "$0", tagline: "For solo builders kicking the tires.", features: ["Up to 3 workflows", "Community support", "1 workspace", "Basic analytics"], cta: "Start free", featured: false },
-    { name: "Growth", price: "$49", tagline: "For teams shipping serious product.", features: ["Unlimited workflows", "Priority support", "Up to 10 seats", "Advanced analytics", "All integrations"], cta: "Start trial", featured: true },
-    { name: "Enterprise", price: "Custom", tagline: "For organizations with scale and compliance needs.", features: ["SSO & SCIM", "Audit logs", "Dedicated CSM", "Custom SLAs", "On-prem options"], cta: "Talk to sales", featured: false },
-  ];
   return (
     <section id="pricing" className="bg-black text-white py-24 md:py-32 border-t border-white/10">
       <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-16">
@@ -177,7 +173,7 @@ function Pricing() {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal" style={{ letterSpacing: "-0.04em" }}>Simple plans. Honest pricing.</h2>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
-          {tiers.map((t) => (
+          {plans.map((t) => (
             <div key={t.name} className={`rounded-2xl p-8 flex flex-col ${t.featured ? "bg-white text-black" : "liquid-glass border border-white/10 text-white"}`}>
               <div className="mb-6">
                 <h3 className="text-xl font-medium mb-1">{t.name}</h3>
@@ -237,8 +233,8 @@ function Testimonials() {
 function FAQ() {
   const items = [
     { q: "Is StartUp a real software service?", a: "No. StartUp is a fictional brand and website concept by Zerra Studios. The product features, plans, testimonials and businesses shown are illustrative, not real offers, certifications or customer results." },
-    { q: "What happens when I get started?", a: "You choose sample tools, select an automation outcome and run a sample event. The preview shows a trigger, an example AI summary and the resulting Slack message. No real tools are connected or messages sent." },
-    { q: "Will my information be saved?", a: "No. The walkthrough uses prepared sample data and does not ask for account credentials or personal information. Your example resets when you leave the page or reload." },
+    { q: "What happens when I get started?", a: "Choose a plan, configure your workflows and team seats, then review the trial setup. The final screen explains that this is a demo and links to Zerra Studios if you want a software website of your own." },
+    { q: "Will my information be saved?", a: "No. This signup preview does not collect payment details, create an account or start a real trial. Your selections reset when you leave the page or reload." },
     { q: "Can I enquire about a website like this?", a: "Yes. Use the Zerra Studios enquiry link in the footer to discuss your own website. That takes you to the real studio website." },
   ];
   return (
@@ -269,7 +265,7 @@ function CTA() {
     <section className="bg-black text-white py-24 md:py-32 border-t border-white/10">
       <div className="max-w-4xl mx-auto px-6 md:px-12 lg:px-16 text-center liquid-glass rounded-3xl py-16 md:py-24">
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal mb-6 text-white" style={{ letterSpacing: "-0.04em" }}>Start building in minutes.</h2>
-        <p className="text-gray-300 max-w-xl mx-auto mb-8">Explore the StartUp concept with a sample automation. No account or payment required.</p>
+        <p className="text-gray-300 max-w-xl mx-auto mb-8">Choose your plan and try the StartUp signup experience. No payment details required.</p>
         <div className="flex flex-wrap gap-4 justify-center">
           <Link to={START} className="bg-white text-black px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors">Start free trial</Link>
           <Link to={`${START}?plan=enterprise`} className="border border-white/20 text-white px-8 py-3 rounded-lg font-medium hover:bg-white hover:text-black transition-colors">Explore Enterprise</Link>
