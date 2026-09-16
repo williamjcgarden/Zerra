@@ -26,4 +26,18 @@ for (const file of [
   "dist/our-work/barbershop-demo.html",
 ]) assert.match(await read(file), /<div id="root">/);
 
-console.log("Phase 1 SEO build contract verified.");
+for (const route of [
+  "tech-demo", "tech-demo/get-started",
+  "landscaping-demo", "landscaping-demo/services", "landscaping-demo/get-a-quote",
+]) {
+  const html = await read(`dist/our-work/${route}.html`);
+  assert.match(html, /noindex/, `${route} must remain a concept, outside search results`);
+  assert.match(html, /Fictional/i, `${route} must disclose the fictional concept in the rendered HTML`);
+  assert.match(html, /<h1[\s>]/, `${route} must contain prerendered page content`);
+}
+
+const royalCuts = await read("dist/demos/royal-cuts/index.html");
+assert.match(royalCuts, /noindex/);
+assert.match(royalCuts, /\/demos\/royal-cuts\/assets\//);
+
+console.log("SEO build and demo deep-route contracts verified.");

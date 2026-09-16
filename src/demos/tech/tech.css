@@ -27,3 +27,41 @@
   mask-composite: exclude;
   pointer-events: none;
 }
+
+/* Scoped additions: concept attribution and the matching-brand setup page. */
+.tech-demo .tech-concept-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0 24px;
+  padding: 4px 20px;
+  color: #d1d5db;
+  background: #171717;
+  border-bottom: 1px solid #ffffff1a;
+  font-size: 11px;
+  text-align: center;
+}
+.tech-demo .tech-concept-bar a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: underline; text-underline-offset: 3px; }
+.tech-demo :focus-visible { outline: 2px solid white; outline-offset: 4px; }
+.tech-demo .tech-setup { width: min(840px, calc(100% - 48px)); margin-inline: auto; padding: 32px 0 96px; min-height: 75vh; }
+.tech-demo .tech-setup-back { display: inline-flex; align-items: center; min-height: 44px; color: #d1d5db; font-size: 14px; margin-bottom: 40px; }
+.tech-demo .tech-setup-intro { max-width: 65ch; line-height: 1.8; }
+.tech-demo .tech-setup-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.tech-demo .tech-setup-fields label { display: block; font-size: 14px; min-width: 0; }
+.tech-demo .tech-setup-fields select,
+.tech-demo .tech-setup-fields input { display: block; width: 100%; min-height: 48px; margin-top: 10px; border: 1px solid #ffffff50; background: #141414; color: white; border-radius: 8px; padding: 10px 12px; font: inherit; }
+.tech-demo .tech-setup-fields input::placeholder { color: #9ca3af; }
+.tech-demo .tech-setup-actions { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; }
+.tech-demo .tech-setup-actions > * { display: inline-flex; align-items: center; min-height: 48px; font-size: 14px; }
+.tech-demo .tech-workspace-name { overflow-wrap: anywhere; }
+.tech-demo .tech-checklist { list-style: none; padding: 0; border-top: 1px solid #ffffff25; }
+.tech-demo .tech-checklist li { border-bottom: 1px solid #ffffff25; }
+.tech-demo .tech-checklist label { display: flex; gap: 12px; align-items: center; min-height: 64px; padding: 12px 0; cursor: pointer; }
+.tech-demo .tech-checklist input { width: 20px; height: 20px; flex-shrink: 0; accent-color: white; }
+.tech-demo .tech-checklist input:checked + span { color: #9ca3af; text-decoration: line-through; }
+@media (max-width: 560px) {
+  .tech-demo .tech-setup { width: calc(100% - 40px); padding-bottom: 64px; }
+  .tech-demo .tech-setup-fields { grid-template-columns: 1fr; gap: 20px; }
+  .tech-demo .tech-setup-back { margin-bottom: 24px; }
+}

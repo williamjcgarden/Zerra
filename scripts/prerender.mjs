@@ -24,3 +24,7 @@ await writeRoute("/__static-404__", resolve(dist, "404.html"));
 // Keep the clothing concept recovery page within its own asset subtree.
 await writeRoute("/our-work/dovetail-demo/__not-found__", resolve(dist, "our-work/dovetail-demo/404.html"));
 await writeRoute("/our-work/dovetail-demo/product/__not-found__", resolve(dist, "our-work/dovetail-demo/product/404.html"));
+
+for (const demo of ["tech-demo", "landscaping-demo"]) {
+  await writeRoute(`/our-work/${demo}/__not-found__`, resolve(dist, `our-work/${demo}/404.html`));
+}

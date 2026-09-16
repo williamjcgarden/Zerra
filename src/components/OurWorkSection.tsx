@@ -11,6 +11,7 @@ type Project = {
   label: string;
   image: string;
   imageAlt: string;
+  href?: string;
 };
 
 const projects: Project[] = [
@@ -20,6 +21,7 @@ const projects: Project[] = [
     label: "Barbershops",
     image: barbershopPreview,
     imageAlt: "Royal Cuts Barbershop homepage preview",
+    href: "/demos/royal-cuts/",
   },
   {
     slug: "landscaping-demo",
@@ -64,7 +66,8 @@ const WorkCard = ({ project, i }: { project: Project; i: number }) => {
       transition={{ duration: 0.6, delay: i * 0.12, ease: [0.25, 0.46, 0.45, 0.94] }}
     >
       <Link
-        to={`/our-work/${project.slug}`}
+        to={project.href ?? `/our-work/${project.slug}`}
+        reloadDocument={Boolean(project.href)}
         aria-label={`Open ${project.label} demo`}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}

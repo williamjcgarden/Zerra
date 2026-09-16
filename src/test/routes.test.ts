@@ -23,6 +23,15 @@ describe("static route manifest", () => {
     }
   });
 
+  it("prerenders the demo journeys so direct visits and reloads work", () => {
+    for (const path of [
+      "/our-work/tech-demo/get-started",
+      "/our-work/landscaping-demo/services",
+      "/our-work/landscaping-demo/get-a-quote",
+      "/our-work/dovetail-demo/checkout",
+    ]) expect(PRERENDER_PATHS).toContain(path);
+  });
+
   it("keeps the retired Rapid preview out of routes and the sitemap", () => {
     const sitemap = readFileSync(resolve("public/sitemap.xml"), "utf8");
     expect(PRERENDER_PATHS.some((path) => path.includes("rapidplumbing"))).toBe(false);

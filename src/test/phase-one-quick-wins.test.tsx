@@ -31,7 +31,12 @@ describe("Phase 1 homepage SEO quick wins", () => {
     expect(screen.getAllByText("Our Work").length).toBeGreaterThan(0);
     expect(screen.getByText(/Websites tailored to/i)).toBeInTheDocument();
     expect(container.querySelector('nav a[href="/our-work"]')).toBeInTheDocument();
-    expect(container.querySelectorAll('#our-work a[href^="/our-work/"]')).toHaveLength(4);
+    expect(Array.from(container.querySelectorAll('#our-work a')).map(link => link.getAttribute('href'))).toEqual([
+      '/our-work/dovetail-demo',
+      '/demos/royal-cuts/',
+      '/our-work/landscaping-demo',
+      '/our-work/tech-demo',
+    ]);
     expect(screen.getByText("E-commerce")).toBeInTheDocument();
     expect(screen.getByText("Software")).toBeInTheDocument();
   });

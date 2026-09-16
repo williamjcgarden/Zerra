@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
+import { Link, Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import {
   ArrowRight, Sprout, Hammer, PencilRuler, Repeat, Star,
-  Award, Gem, HeartHandshake, Phone, Mail, MapPin, Clock,
-  Instagram, Facebook, Twitter, ChevronLeft, ChevronRight, Leaf, X,
+  Award, Gem, HeartHandshake, ArrowLeft, ChevronLeft, ChevronRight, Leaf,
 } from "lucide-react";
 import "@/demos/landscaping/landscaping.css";
-import BackToZerra from "@/components/BackToZerra";
+import "@/demos/landscaping/landscaping-journeys.css";
+import { landscapingBase, QuoteJourney, ServiceDetails, LandscapingNotFound } from "@/demos/landscaping/components/site/JourneyPages";
 import { Nav } from "@/demos/landscaping/components/site/Nav";
 import { BeforeAfter } from "@/demos/landscaping/components/site/BeforeAfter";
 import { useReveal } from "@/demos/landscaping/hooks/use-reveal";
@@ -53,45 +55,6 @@ const testimonials = [
   { img: c3, name: "Linda Hoffmann", role: "Retired, Westbrook", rating: 5, quote: "They listened. They cared. They built me a garden I'll enjoy for the rest of my life. I cannot recommend them enough." },
 ];
 
-function DemoAlert({ open, onClose }: { open: boolean; onClose: () => void }) {
-  if (!open) return null;
-
-  return (
-    <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-charcoal/55 px-4 backdrop-blur-sm"
-      onClick={onClose}
-    >
-      <div
-        className="relative max-w-md rounded-[2rem] border border-primary/10 bg-background p-8 text-center shadow-deep"
-        onClick={(event) => event.stopPropagation()}
-      >
-        <button
-          type="button"
-          aria-label="Close demo message"
-          onClick={onClose}
-          className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:border-accent hover:bg-secondary hover:text-primary"
-        >
-          <X className="h-4 w-4" />
-        </button>
-        <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary">
-          <Leaf className="h-6 w-6" />
-        </span>
-        <h3 className="mt-6 font-display text-3xl text-foreground">Demo Website</h3>
-        <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-          This is a demo site. If this website was yours, this button would turn visitor interest into a quote request, consultation booking, or direct call.
-        </p>
-        <button
-          type="button"
-          onClick={onClose}
-          className="mt-7 inline-flex items-center justify-center rounded-full bg-accent px-7 py-3 text-sm font-semibold text-accent-foreground shadow-soft transition-all hover:-translate-y-0.5 hover:shadow-lift"
-        >
-          Got it
-        </button>
-      </div>
-    </div>
-  );
-}
-
 function Hero({ onDemoAction }: { onDemoAction: () => void }) {
   return (
     <section id="top" className="relative min-h-screen w-full overflow-hidden">
@@ -118,7 +81,8 @@ function Hero({ onDemoAction }: { onDemoAction: () => void }) {
             </button>
           </div>
         </div>
-        <div className="mt-16 flex items-center gap-8 text-white/75">
+        <p className="mt-12 text-xs text-white/80">Illustrative figures for this fictional brand.</p>
+        <div className="mt-4 flex flex-wrap items-center gap-6 text-white/75">
           <div><div className="font-display text-3xl text-white">500+</div><div className="text-xs uppercase tracking-wider">Yards Transformed</div></div>
           <div className="h-10 w-px bg-white/25" />
           <div><div className="font-display text-3xl text-white">20+</div><div className="text-xs uppercase tracking-wider">Years Experience</div></div>
@@ -130,7 +94,7 @@ function Hero({ onDemoAction }: { onDemoAction: () => void }) {
   );
 }
 
-function Services({ onDemoAction }: { onDemoAction: () => void }) {
+function Services() {
   const ref = useReveal<HTMLElement>();
   return (
     <section ref={ref} id="services" className="bg-background py-28">
@@ -151,9 +115,9 @@ function Services({ onDemoAction }: { onDemoAction: () => void }) {
               </div>
               <h3 className="font-display text-2xl">{s.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
-              <button type="button" onClick={onDemoAction} className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors group-hover:text-accent">
+              <Link to={`${landscapingBase}/services#${["lawn-care", "hardscaping", "landscape-design", "maintenance"][i]}`} className="mt-6 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-primary transition-colors group-hover:text-accent">
                 Learn More <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-              </button>
+              </Link>
             </div>
           ))}
         </div>
@@ -181,10 +145,10 @@ function Portfolio() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="reveal mb-16 flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-xl">
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary accent-underline">Recent Work</span>
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary accent-underline">Concept Projects</span>
             <h2 className="mt-8 font-display text-4xl md:text-5xl">Drag the slider. Watch the transformation.</h2>
           </div>
-          <p className="max-w-sm text-muted-foreground">Each project starts with a blank canvas — sometimes literally — and ends in something we're genuinely proud to put our name on.</p>
+          <p className="max-w-sm text-muted-foreground">Illustrative before-and-after concepts show how this portfolio could work. These are not completed client projects.</p>
         </div>
         <div className="grid auto-rows-[260px] grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
           {projects.map((p, i) => (
@@ -217,7 +181,7 @@ function WhyUs() {
     <section ref={ref} id="about" className="bg-charcoal py-28 text-charcoal-foreground">
       <div className="mx-auto max-w-7xl px-6">
         <div className="reveal mb-16 max-w-2xl">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Why Verdant</span>
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Why Verdant · Illustrative Brand Promises</span>
           <h2 className="mt-4 font-display text-4xl md:text-5xl">Built on craft. Run with care.</h2>
         </div>
         <div className="grid gap-12 md:grid-cols-3">
@@ -242,7 +206,7 @@ function Team() {
     <section ref={ref} className="bg-background py-28">
       <div className="mx-auto max-w-7xl px-6">
         <div className="reveal mb-16 max-w-2xl">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary accent-underline">The People</span>
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary accent-underline">Fictional Team Profiles</span>
           <h2 className="mt-8 font-display text-4xl md:text-5xl">Meet the crew behind your yard.</h2>
         </div>
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -275,7 +239,7 @@ function Testimonials() {
   return (
     <section ref={ref} className="bg-secondary/40 py-28">
       <div className="mx-auto max-w-5xl px-6 text-center">
-        <span className="reveal text-xs font-semibold uppercase tracking-[0.2em] text-primary">Word of Mouth</span>
+        <span className="reveal text-xs font-semibold uppercase tracking-[0.2em] text-primary">Illustrative Testimonials · Fictional Customers</span>
         <h2 className="reveal mt-4 font-display text-4xl md:text-5xl">Kind words from kind people.</h2>
         <div className="reveal relative mt-14 min-h-[280px]">
           {testimonials.map((tt, i) => (
@@ -328,76 +292,47 @@ function CTA({ onDemoAction }: { onDemoAction: () => void }) {
           Ready for your <span className="italic text-accent">dream yard?</span>
         </h2>
         <p className="mx-auto mt-6 max-w-xl text-lg text-primary-foreground/80">
-          Free 60-minute consultation. No pressure, no fees — just real ideas for your space.
+          Explore a project brief for your space. This demo does not send a request or book a consultation.
         </p>
         <button type="button" onClick={onDemoAction} className="mt-10 inline-flex items-center gap-2 rounded-full bg-accent px-9 py-4 text-lg font-semibold text-accent-foreground shadow-deep transition-all hover:-translate-y-0.5">
-          Get Free Quote <ArrowRight className="h-5 w-5" />
+          Get a Quote <ArrowRight className="h-5 w-5" />
         </button>
-        <div className="mt-6 text-sm text-primary-foreground/70">or call <button type="button" onClick={onDemoAction} className="underline">(555) 123-4567</button></div>
+        <div className="mt-6 text-sm text-primary-foreground/80"><Link to="/?enquiry=website" className="inline-flex min-h-11 items-center underline">Real website enquiry with Zerra Studios</Link></div>
       </div>
     </section>
   );
 }
 
-function LandscapingFooter({ onDemoAction }: { onDemoAction: () => void }) {
+function LandscapingFooter() {
   return (
     <footer className="bg-charcoal py-16 text-charcoal-foreground">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid gap-10 md:grid-cols-4">
           <div>
-            <div className="flex items-center gap-2">
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent text-accent-foreground">
-                <Leaf className="h-4 w-4" />
-              </span>
-              <span className="font-display text-xl">Verdant<span className="text-accent">.</span></span>
-            </div>
-            <p className="mt-4 text-sm text-charcoal-foreground/70">Premium landscape design and care since 2003.</p>
-            <div className="mt-5 flex gap-3">
-              {[Instagram, Facebook, Twitter].map((I, i) => (
-                <button key={i} type="button" onClick={onDemoAction} className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 transition-colors hover:bg-accent hover:border-accent hover:text-accent-foreground">
-                  <I className="h-4 w-4" />
-                </button>
-              ))}
-            </div>
+            <div className="flex items-center gap-2"><span className="flex h-9 w-9 items-center justify-center rounded-full bg-accent text-accent-foreground"><Leaf className="h-4 w-4" /></span><span className="font-display text-xl">Verdant<span className="text-accent">.</span></span></div>
+            <p className="mt-4 text-sm text-charcoal-foreground/80">A fictional landscaping brand and website concept by Zerra Studios.</p>
           </div>
-          <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-accent">Service Areas</h4>
-            <ul className="mt-4 space-y-2 text-sm text-charcoal-foreground/75">
-              <li>Oak Park</li><li>Westbrook</li><li>Maple Grove</li><li>Lakeshore</li><li>Riverside</li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-accent">Hours</h4>
-            <ul className="mt-4 space-y-2 text-sm text-charcoal-foreground/75">
-              <li className="flex items-center gap-2"><Clock className="h-3.5 w-3.5" /> Mon–Fri: 7am – 6pm</li>
-              <li>Sat: 8am – 4pm</li>
-              <li>Sun: Closed</li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-accent">Contact</h4>
-            <ul className="mt-4 space-y-2 text-sm text-charcoal-foreground/75">
-              <li className="flex items-center gap-2"><Phone className="h-3.5 w-3.5" /> (555) 123-4567</li>
-              <li className="flex items-center gap-2"><Mail className="h-3.5 w-3.5" /> hello@verdant.co</li>
-              <li className="flex items-center gap-2"><MapPin className="h-3.5 w-3.5" /> 142 Garden Lane</li>
-            </ul>
-          </div>
+          <div><h4 className="text-sm font-semibold uppercase tracking-wider text-[#75d49a]">Explore Verdant</h4><nav aria-label="Verdant footer" className="mt-4 flex flex-col text-sm text-charcoal-foreground/80"><Link className="inline-flex min-h-11 items-center" to={`${landscapingBase}/services`}>Service details</Link><Link className="inline-flex min-h-11 items-center" to={`${landscapingBase}#portfolio`}>Concept projects</Link><Link className="inline-flex min-h-11 items-center" to={`${landscapingBase}#about`}>About the concept</Link></nav></div>
+          <div><h4 className="text-sm font-semibold uppercase tracking-wider text-[#75d49a]">Try the journey</h4><p className="mt-4 text-sm text-charcoal-foreground/80">Build and preview a project brief. No personal details needed; nothing is sent or booked.</p><Link className="mt-3 inline-flex min-h-11 items-center gap-2 text-sm underline" to={`${landscapingBase}/get-a-quote`}>Get a Quote <ArrowRight size={15} /></Link></div>
+          <div><h4 className="text-sm font-semibold uppercase tracking-wider text-[#75d49a]">Your website</h4><p className="mt-4 text-sm text-charcoal-foreground/80">Interested in a website for your own business?</p><Link className="mt-3 inline-flex min-h-11 items-center text-sm underline" to="/?enquiry=website">Real enquiry with Zerra Studios</Link><Link className="inline-flex min-h-11 items-center text-sm underline" to="/our-work">Back to Zerra’s work</Link></div>
         </div>
-        <div className="mt-12 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-charcoal-foreground/55">
-          <div>© {new Date().getFullYear()} Verdant Landscaping. All rights reserved.</div>
-          <div>Cultivated with care.</div>
-        </div>
-        <p className="mt-3 text-[11px] leading-relaxed text-charcoal-foreground/45">
-          This is a concept demo. Testimonials, businesses, statistics, and claims are fictional.
-        </p>
+        <details className="mt-10 border-t border-white/15 pt-4"><summary className="min-h-11 cursor-pointer py-3 text-sm font-semibold">Is Verdant a real landscaping company?</summary><p className="max-w-3xl pb-4 text-sm text-charcoal-foreground/80">No. Verdant is a fictional website concept. Its team, testimonials, statistics, history, project imagery and service promises are illustrative. The project brief is a simulated experience; Zerra Studios is the real website enquiry destination.</p></details>
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-charcoal-foreground/75"><div>Website concept by Zerra Studios.</div><div>Cultivated with care.</div></div>
       </div>
     </footer>
   );
 }
 
 const LandscapingDemo = () => {
-  const [demoOpen, setDemoOpen] = useState(false);
-  const showDemoAlert = () => setDemoOpen(true);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const openQuote = () => navigate(`${landscapingBase}/get-a-quote`);
+  useEffect(() => {
+    if (location.hash) requestAnimationFrame(() => document.getElementById(location.hash.slice(1))?.scrollIntoView());
+    else window.scrollTo(0, 0);
+  }, [location.pathname, location.hash]);
+  const pathname = location.pathname.replace(/\/$/, "");
+  const title = pathname.endsWith("/services") ? "Services" : pathname.endsWith("/get-a-quote") ? "Get a Quote" : "Landscaping Website Concept";
 
   return (
     <div className="landscaping-demo">
@@ -407,17 +342,16 @@ const LandscapingDemo = () => {
         href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap"
         rel="stylesheet"
       />
-      <BackToZerra />
-      <Nav onDemoAction={showDemoAlert} />
-      <Hero onDemoAction={showDemoAlert} />
-      <Services onDemoAction={showDemoAlert} />
-      <Portfolio />
-      <WhyUs />
-      <Team />
-      <Testimonials />
-      <CTA onDemoAction={showDemoAlert} />
-      <LandscapingFooter onDemoAction={showDemoAlert} />
-      <DemoAlert open={demoOpen} onClose={() => setDemoOpen(false)} />
+      <Helmet><title>{title} | Verdant by Zerra Studios</title><meta name="robots" content="noindex,nofollow" /></Helmet>
+      <div className="landscaping-concept-bar"><span>Fictional brand · Website concept by Zerra Studios</span><Link to="/our-work"><ArrowLeft size={13} />Back to Zerra</Link></div>
+      <Nav onDemoAction={openQuote} />
+      <main><Routes>
+        <Route index element={<><Hero onDemoAction={openQuote} /><Services /><Portfolio /><WhyUs /><Team /><Testimonials /><CTA onDemoAction={openQuote} /></>} />
+        <Route path="services" element={<ServiceDetails />} />
+        <Route path="get-a-quote" element={<QuoteJourney />} />
+        <Route path="*" element={<LandscapingNotFound />} />
+      </Routes></main>
+      <LandscapingFooter />
     </div>
   );
 };

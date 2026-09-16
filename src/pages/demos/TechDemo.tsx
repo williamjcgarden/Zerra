@@ -1,9 +1,14 @@
 import "@/demos/tech/tech.css";
-import BackToZerra from "@/components/BackToZerra";
+import { useEffect } from "react";
+import { Link, Route, Routes, useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import { GetStarted } from "@/demos/tech/components/GetStarted";
 import { AnimatedHeading } from "@/demos/tech/components/AnimatedHeading";
 import { FadeIn } from "@/demos/tech/components/FadeIn";
-import { DemoModal } from "@/demos/tech/components/DemoModal";
 import techMobileHero from "@/demos/tech/assets/tech-demo-mobile-hero.png";
+
+const HOME = "/our-work/tech-demo";
+const START = `${HOME}/get-started`;
 
 function Nav() {
   return (
@@ -18,9 +23,9 @@ function Nav() {
           <a href="#pricing" className="hover:text-gray-300 transition-all duration-200 active:scale-95 active:opacity-70">Pricing</a>
           <a href="#faq" className="hover:text-gray-300 transition-all duration-200 active:scale-95 active:opacity-70">FAQ</a>
         </div>
-        <button className="bg-white text-black px-6 py-2 rounded-lg text-sm font-medium hover:bg-gray-100 transition-all duration-200 active:scale-95">
+        <Link to={START} className="bg-white text-black px-6 py-2 rounded-lg text-sm font-medium hover:bg-gray-100 transition-all duration-200 active:scale-95">
           Get Started
-        </button>
+        </Link>
       </div>
     </nav>
   );
@@ -43,7 +48,7 @@ function Hero() {
           <div className="w-full max-w-4xl flex flex-col items-center">
             <FadeIn delay={100} duration={800}>
               <div className="liquid-glass rounded-full px-4 py-1.5 mb-6 text-xs tracking-wide uppercase text-white">
-                Now in public beta
+                Fictional software concept
               </div>
             </FadeIn>
             <AnimatedHeading
@@ -60,12 +65,12 @@ function Hero() {
             </FadeIn>
             <FadeIn delay={1200} duration={1000}>
               <div className="flex flex-wrap gap-4 justify-center">
-                <button className="bg-white text-black px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+                <Link to={START} className="bg-white text-black px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors">
                   Start free trial
-                </button>
-                <button className="liquid-glass border border-white/20 text-white px-8 py-3 rounded-lg font-medium hover:bg-white hover:text-black transition-colors">
+                </Link>
+                <Link to={`${START}?preview=1`} className="liquid-glass border border-white/20 text-white px-8 py-3 rounded-lg font-medium hover:bg-white hover:text-black transition-colors">
                   Watch demo
-                </button>
+                </Link>
               </div>
             </FadeIn>
           </div>
@@ -87,7 +92,7 @@ function Logos() {
   return (
     <section className="bg-black text-white py-16 border-t border-white/10">
       <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-16">
-        <p className="text-center text-sm uppercase tracking-widest text-gray-400 mb-8">Trusted by teams at</p>
+        <p className="text-center text-sm uppercase tracking-widest text-gray-400 mb-8">Illustrative brands, not customers</p>
         <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6 opacity-70">
           {logos.map((l) => <span key={l} className="text-lg md:text-xl font-medium tracking-tight text-white">{l}</span>)}
         </div>
@@ -109,7 +114,7 @@ function Features() {
     <section id="features" className="bg-black text-white py-24 md:py-32 border-t border-white/10">
       <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-16">
         <div className="max-w-2xl mb-16">
-          <p className="text-sm uppercase tracking-widest text-gray-400 mb-4">Features</p>
+          <p className="text-sm uppercase tracking-widest text-gray-400 mb-4">Illustrative product features</p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal" style={{ letterSpacing: "-0.04em" }}>
             Everything you need.<br /><span className="text-gray-400">Nothing you don't.</span>
           </h2>
@@ -165,7 +170,7 @@ function Pricing() {
     <section id="pricing" className="bg-black text-white py-24 md:py-32 border-t border-white/10">
       <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-16">
         <div className="text-center mb-16">
-          <p className="text-sm uppercase tracking-widest text-gray-400 mb-4">Pricing</p>
+          <p className="text-sm uppercase tracking-widest text-gray-400 mb-4">Illustrative pricing</p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal" style={{ letterSpacing: "-0.04em" }}>Simple plans. Honest pricing.</h2>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
@@ -186,9 +191,9 @@ function Pricing() {
                   </li>
                 ))}
               </ul>
-              <button className={`w-full px-6 py-3 rounded-lg font-medium transition-colors ${t.featured ? "bg-black text-white hover:bg-gray-900" : "bg-white text-black hover:bg-gray-100"}`}>
+              <Link to={`${START}?plan=${t.name.toLowerCase()}`} className={`text-center w-full px-6 py-3 rounded-lg font-medium transition-colors ${t.featured ? "bg-black text-white hover:bg-gray-900" : "bg-white text-black hover:bg-gray-100"}`}>
                 {t.cta}
-              </button>
+              </Link>
             </div>
           ))}
         </div>
@@ -207,7 +212,7 @@ function Testimonials() {
     <section className="bg-black text-white py-24 md:py-32 border-t border-white/10">
       <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-16">
         <div className="max-w-2xl mb-16">
-          <p className="text-sm uppercase tracking-widest text-gray-400 mb-4">Loved by teams</p>
+          <p className="text-sm uppercase tracking-widest text-gray-400 mb-4">Fictional testimonial examples</p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal" style={{ letterSpacing: "-0.04em" }}>Built for the teams building what's next.</h2>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
@@ -228,10 +233,10 @@ function Testimonials() {
 
 function FAQ() {
   const items = [
-    { q: "Is there really a free plan?", a: "Yes. The Starter plan is free forever for solo users with up to 3 workflows." },
-    { q: "Can I switch plans later?", a: "Anytime. Upgrades are prorated and downgrades take effect at the next billing cycle." },
-    { q: "Do you offer onboarding for larger teams?", a: "Growth and Enterprise customers get hands-on onboarding from a dedicated specialist." },
-    { q: "Where is my data stored?", a: "Data is stored in SOC 2 Type II certified facilities, with regional options for EU and US." },
+    { q: "Is StartUp a real software service?", a: "No. StartUp is a fictional brand and website concept by Zerra Studios. The product features, plans, testimonials and businesses shown are illustrative, not real offers, certifications or customer results." },
+    { q: "What happens when I get started?", a: "You choose a workflow, team size and illustrative plan, then try a sample task checklist. No real account, free trial, payment or invitation is created." },
+    { q: "Will my information be saved?", a: "No workspace information is submitted or saved remotely. Use a made-up workspace name. Your preview resets when you leave the page or reload." },
+    { q: "Can I enquire about a website like this?", a: "Yes. Use the Zerra Studios enquiry link in the footer to discuss your own website. That takes you to the real studio website." },
   ];
   return (
     <section id="faq" className="bg-black text-white py-24 md:py-32 border-t border-white/10">
@@ -261,10 +266,10 @@ function CTA() {
     <section className="bg-black text-white py-24 md:py-32 border-t border-white/10">
       <div className="max-w-4xl mx-auto px-6 md:px-12 lg:px-16 text-center liquid-glass rounded-3xl py-16 md:py-24">
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal mb-6 text-white" style={{ letterSpacing: "-0.04em" }}>Start building in minutes.</h2>
-        <p className="text-gray-300 max-w-xl mx-auto mb-8">Join thousands of teams using StartUp to automate the boring and accelerate the ambitious.</p>
+        <p className="text-gray-300 max-w-xl mx-auto mb-8">Explore the StartUp concept with a sample workspace. No account or payment required.</p>
         <div className="flex flex-wrap gap-4 justify-center">
-          <button className="bg-white text-black px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors">Start free trial</button>
-          <button className="border border-white/20 text-white px-8 py-3 rounded-lg font-medium hover:bg-white hover:text-black transition-colors">Talk to sales</button>
+          <Link to={START} className="bg-white text-black px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors">Start free trial</Link>
+          <Link to={`${START}?plan=enterprise`} className="border border-white/20 text-white px-8 py-3 rounded-lg font-medium hover:bg-white hover:text-black transition-colors">Explore Enterprise</Link>
         </div>
       </div>
     </section>
@@ -282,52 +287,72 @@ function TechFooter() {
         <div>
           <h4 className="text-sm font-medium mb-4">Product</h4>
           <ul className="space-y-2 text-sm text-gray-400">
-            <li><a href="#features" className="hover:text-white">Features</a></li>
-            <li><a href="#pricing" className="hover:text-white">Pricing</a></li>
-            <li><a href="#how" className="hover:text-white">How it works</a></li>
+            <li><a href={`${HOME}#features`} className="hover:text-white">Features</a></li>
+            <li><a href={`${HOME}#pricing`} className="hover:text-white">Pricing</a></li>
+            <li><a href={`${HOME}#how`} className="hover:text-white">How it works</a></li>
           </ul>
         </div>
         <div>
-          <h4 className="text-sm font-medium mb-4">Company</h4>
+          <h4 className="text-sm font-medium mb-4">Explore</h4>
           <ul className="space-y-2 text-sm text-gray-400">
-            <li><a href="#about" data-demo-action className="hover:text-white">About</a></li>
-            <li><a href="#careers" data-demo-action className="hover:text-white">Careers</a></li>
-            <li><a href="#blog" data-demo-action className="hover:text-white">Blog</a></li>
+            <li><Link to={START} className="hover:text-white">Get Started</Link></li>
+            <li><Link to={`${START}?preview=1`} className="hover:text-white">Try the preview</Link></li>
+            <li><Link to={`${HOME}#faq`} className="hover:text-white">Concept FAQ</Link></li>
           </ul>
         </div>
         <div>
-          <h4 className="text-sm font-medium mb-4">Legal</h4>
+          <h4 className="text-sm font-medium mb-4">Zerra Studios</h4>
           <ul className="space-y-2 text-sm text-gray-400">
-            <li><a href="#privacy" data-demo-action className="hover:text-white">Privacy</a></li>
-            <li><a href="#terms" data-demo-action className="hover:text-white">Terms</a></li>
-            <li><a href="#security" data-demo-action className="hover:text-white">Security</a></li>
+            <li><Link to={"/"} className="hover:text-white">About the studio</Link></li>
+            <li><Link to={"/our-work"} className="hover:text-white">More of our work</Link></li>
+            <li><Link to={"/?enquiry=website"} className="hover:text-white">Enquire about a website</Link></li>
           </ul>
         </div>
       </div>
-      <div className="border-t border-white/10 px-6 py-6 text-center text-xs text-gray-500">
-        <p>© 2026 StartUp, Inc. All rights reserved.</p>
-        <p className="mt-2 text-[11px] leading-relaxed text-gray-600">
-          This is a concept demo. Testimonials, businesses, statistics, and claims are fictional.
+      <div className="border-t border-white/10 px-6 py-6 text-center text-xs text-gray-400">
+        <p>StartUp · A fictional brand and website concept by <Link to="/" className="underline underline-offset-4">Zerra Studios</Link>.</p>
+        <p className="mt-2 text-[11px] leading-relaxed text-gray-400">
+          Testimonials, businesses, features and prices are illustrative. Interactions are simulated; no accounts, payments or remote workspaces are created.
         </p>
       </div>
     </footer>
   );
 }
 
-const TechDemo = () => (
-  <main className="bg-black">
-    <BackToZerra />
-    <Hero />
-    <Logos />
-    <Features />
-    <HowItWorks />
-    <Pricing />
-    <Testimonials />
-    <FAQ />
-    <CTA />
-    <TechFooter />
-    <DemoModal />
-  </main>
-);
+function TechHome() {
+  return <><Hero /><Logos /><Features /><HowItWorks /><Pricing /><Testimonials /><FAQ /><CTA /></>;
+}
+
+function TechDemo() {
+  const { pathname, hash } = useLocation();
+  const path = pathname.replace(/\/+$/, "");
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      if (hash) document.getElementById(hash.slice(1))?.scrollIntoView();
+      else window.scrollTo(0, 0);
+    }, 50);
+    return () => window.clearTimeout(timer);
+  }, [pathname, hash]);
+  return (
+    <div className="tech-demo bg-black">
+      <Helmet>
+        <title>{path.endsWith("/get-started") ? "Get Started" : "StartUp"} | Fictional concept by Zerra Studios</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
+      <div className="tech-concept-bar">
+        <span>Fictional brand. Website concept by <Link to="/">Zerra Studios</Link>.</span>
+        <Link to="/our-work">← Back to our work</Link>
+      </div>
+      <main>
+        <Routes>
+          <Route index element={<TechHome />} />
+          <Route path="get-started" element={<GetStarted />} />
+          <Route path="*" element={<section className="tech-setup text-white"><h1 className="text-4xl mb-6">This page isn’t part of the preview.</h1><Link to={HOME}>← Back to StartUp</Link></section>} />
+        </Routes>
+      </main>
+      <TechFooter />
+    </div>
+  );
+}
 
 export default TechDemo;

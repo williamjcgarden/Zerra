@@ -1,0 +1,246 @@
+/* Additive concept navigation and destination styles; the original homepage theme remains intact. */
+.landscaping-demo {
+  --landscaping-banner-height: 44px;
+}
+.landscaping-demo .landscaping-concept-bar {
+  position: fixed;
+  top: 0;
+  inset-inline: 0;
+  z-index: 60;
+  height: var(--landscaping-banner-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-inline: 24px;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  font-size: 11px;
+  line-height: 1.5;
+}
+.landscaping-demo .landscaping-concept-bar > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  white-space: nowrap;
+}
+.landscaping-demo .landscaping-nav {
+  top: var(--landscaping-banner-height);
+}
+.landscaping-demo
+  :is(#services, #portfolio, #about, #contact, .landscaping-service-detail) {
+  scroll-margin-top: calc(var(--landscaping-banner-height) + 100px);
+}
+.landscaping-demo .landscaping-destination {
+  padding-top: calc(var(--landscaping-banner-height) + 130px);
+}
+.landscaping-demo .landscaping-journey-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 12px 23px;
+  border-radius: 999px;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  font-size: 14px;
+  font-weight: 600;
+  transition:
+    transform 0.2s,
+    background 0.2s;
+}
+.landscaping-demo .landscaping-journey-button:hover {
+  background: hsl(145 35% 22%);
+  transform: translateY(-1px);
+}
+.landscaping-demo .landscaping-journey-link {
+  display: inline-flex;
+  gap: 9px;
+  align-items: center;
+  min-height: 44px;
+  color: hsl(var(--primary));
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.landscaping-demo .landscaping-progress {
+  display: flex;
+  gap: 16px;
+  padding: 0 0 24px;
+  border-bottom: 1px solid hsl(var(--border));
+  list-style: none;
+}
+.landscaping-demo .landscaping-progress li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: hsl(var(--muted-foreground));
+  font-size: 12px;
+}
+.landscaping-demo .landscaping-progress li > span {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: hsl(var(--secondary));
+  color: hsl(var(--primary));
+}
+.landscaping-demo .landscaping-progress li[aria-current] {
+  font-weight: 600;
+  color: hsl(var(--primary));
+}
+.landscaping-demo .landscaping-progress li[aria-current] > span {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+.landscaping-demo .landscaping-service-options {
+  margin-block: 24px;
+  display: grid;
+  gap: 10px;
+}
+.landscaping-demo .landscaping-service-options label {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  border: 1px solid hsl(var(--border));
+  border-radius: 14px;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.landscaping-demo .landscaping-service-options label:has(input:checked) {
+  background: hsl(var(--secondary));
+  border-color: hsl(var(--primary));
+}
+.landscaping-demo .landscaping-service-options input {
+  width: 18px;
+  height: 18px;
+  accent-color: hsl(var(--primary));
+}
+.landscaping-demo .landscaping-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 18px;
+}
+.landscaping-demo .landscaping-journey-panel form > label,
+.landscaping-demo .landscaping-form-grid label {
+  display: block;
+  margin-block: 20px 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.landscaping-demo .landscaping-journey-panel select,
+.landscaping-demo .landscaping-journey-panel textarea {
+  display: block;
+  width: 100%;
+  margin-top: 9px;
+  border: 1px solid hsl(110 5% 70%);
+  border-radius: 12px;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  min-height: 48px;
+  padding: 12px;
+  font-size: 16px;
+}
+.landscaping-demo .landscaping-journey-panel textarea {
+  resize: vertical;
+}
+.landscaping-demo .landscaping-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+.landscaping-demo .landscaping-brief {
+  margin-block: 24px;
+}
+.landscaping-demo .landscaping-brief > div {
+  padding-block: 16px;
+  border-bottom: 1px solid hsl(var(--border));
+}
+.landscaping-demo .landscaping-brief dt {
+  font-size: 12px;
+  color: hsl(var(--muted-foreground));
+  margin-bottom: 7px;
+}
+.landscaping-demo .landscaping-brief dd {
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+.landscaping-demo .landscaping-journey-panel h2 {
+  scroll-margin-top: calc(var(--landscaping-banner-height) + 100px);
+}
+.landscaping-demo .landscaping-journey-panel h2:focus {
+  outline: none;
+}
+.landscaping-demo
+  :is(
+    a,
+    button,
+    input,
+    select,
+    textarea,
+    summary,
+    [role="slider"]
+  ):focus-visible {
+  outline: 3px solid hsl(var(--primary));
+  outline-offset: 4px;
+}
+.landscaping-demo .landscaping-concept-bar a:focus-visible {
+  outline-color: white;
+}
+@media (max-width: 639px) {
+  .landscaping-demo {
+    --landscaping-banner-height: 64px;
+  }
+  .landscaping-demo .landscaping-concept-bar {
+    font-size: 10px;
+    padding-inline: 16px;
+  }
+  .landscaping-demo .landscaping-concept-bar > span {
+    max-width: 190px;
+  }
+  .landscaping-demo .landscaping-nav-quote {
+    padding-inline: 13px;
+    font-size: 11px;
+  }
+  .landscaping-demo .landscaping-progress {
+    gap: 10px;
+    justify-content: space-between;
+  }
+  .landscaping-demo .landscaping-progress li {
+    gap: 5px;
+    font-size: 10px;
+  }
+  .landscaping-demo .landscaping-progress li > span {
+    width: 24px;
+    height: 24px;
+  }
+  .landscaping-demo .landscaping-form-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+@media (max-width: 359px) {
+  .landscaping-demo .landscaping-nav-quote {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .landscaping-demo *,
+  .landscaping-demo *::before,
+  .landscaping-demo *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .landscaping-demo .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

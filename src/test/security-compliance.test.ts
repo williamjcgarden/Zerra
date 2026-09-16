@@ -6,11 +6,10 @@ const read = (path: string) => readFileSync(resolve(path), "utf8");
 
 describe("security and privacy compliance", () => {
   it("labels every fictional public concept demo in its footer", () => {
-    const disclaimer = "This is a concept demo. Testimonials, businesses, statistics, and claims are fictional.";
-
-    expect(read("src/pages/demos/LandscapingDemo.tsx")).toContain(disclaimer);
-    expect(read("src/pages/demos/TechDemo.tsx")).toContain(disclaimer);
-    expect(read("src/demos/barbershop/components/Footer.tsx")).toContain(disclaimer);
+    expect(read("src/pages/demos/LandscapingDemo.tsx")).toMatch(/A fictional landscaping brand and website concept by Zerra Studios/);
+    expect(read("src/pages/demos/TechDemo.tsx")).toMatch(/StartUp is a fictional brand and website concept/);
+    expect(read("review/royal-cuts-rebuild/src/App.tsx")).toMatch(/Fictional barbershop concept/);
+    expect(read("src/demos/dovetail/components/Footer.tsx")).toMatch(/Fictional clothing concept/);
   });
 
   it("accurately identifies collected fields and service providers", () => {

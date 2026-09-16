@@ -44,6 +44,8 @@ export const PUBLIC_PRERENDER_PATHS = [
 ] as const;
 
 export const PRERENDER_PATHS = [...PUBLIC_PRERENDER_PATHS,
+  "/our-work/tech-demo/get-started",
+  ...["services", "get-a-quote"].map(path => `/our-work/landscaping-demo/${path}`),
   ...["story", "help", "checkout"].map(path => `/our-work/dovetail-demo/${path}`),
   ...DOVETAIL_PRODUCT_IDS.map(productId => `/our-work/dovetail-demo/product/${productId}`),
 ];
@@ -54,8 +56,8 @@ export const APP_ROUTES: RouteObject[] = [
   { path: "/terms-of-service", element: <TermsOfService /> },
   ...Object.keys(SECTION_ROUTE_IDS).map((path) => ({ path, element: <Index /> })),
   { path: "/our-work/barbershop-demo", element: <BarbershopDemo /> },
-  { path: "/our-work/landscaping-demo", element: <LandscapingDemo /> },
-  { path: "/our-work/tech-demo", element: <TechDemo /> },
+  { path: "/our-work/landscaping-demo/*", element: <LandscapingDemo /> },
+  { path: "/our-work/tech-demo/*", element: <TechDemo /> },
   { path: "/our-work/dovetail-demo/*", element: <DovetailDemo /> },
   { path: "*", element: <NotFound /> },
 ];
