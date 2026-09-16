@@ -1,29 +1,12 @@
 /* Additive concept navigation and destination styles; the original homepage theme remains intact. */
-.landscaping-demo {
-  --landscaping-banner-height: 44px;
-}
+.landscaping-demo { --landscaping-banner-height: 30.5px; }
 .landscaping-demo .landscaping-concept-bar {
   position: fixed;
   top: 0;
   inset-inline: 0;
   z-index: 60;
-  height: var(--landscaping-banner-height);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding-inline: 24px;
   background: hsl(var(--primary));
   color: hsl(var(--primary-foreground));
-  font-size: 11px;
-  line-height: 1.5;
-}
-.landscaping-demo .landscaping-concept-bar > a {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  min-height: 44px;
-  white-space: nowrap;
 }
 .landscaping-demo .landscaping-nav {
   top: var(--landscaping-banner-height);
@@ -191,20 +174,10 @@
   outline: 3px solid hsl(var(--primary));
   outline-offset: 4px;
 }
-.landscaping-demo .landscaping-concept-bar a:focus-visible {
-  outline-color: white;
+@media (max-width: 767px) {
+  .landscaping-demo { --landscaping-banner-height: 44px; }
 }
 @media (max-width: 639px) {
-  .landscaping-demo {
-    --landscaping-banner-height: 64px;
-  }
-  .landscaping-demo .landscaping-concept-bar {
-    font-size: 10px;
-    padding-inline: 16px;
-  }
-  .landscaping-demo .landscaping-concept-bar > span {
-    max-width: 190px;
-  }
   .landscaping-demo .landscaping-nav-quote {
     padding-inline: 13px;
     font-size: 11px;
@@ -243,4 +216,11 @@
     opacity: 1;
     transform: none;
   }
+}
+/* Leave the same clear lane for the floating return arrow as Dovetail. */
+@media (max-width: 1279px) {
+  .landscaping-demo .landscaping-nav > div { padding-left: 72px; }
+}
+@media (min-width: 768px) and (max-width: 900px) {
+  .landscaping-demo .landscaping-nav nav { gap: 24px; }
 }

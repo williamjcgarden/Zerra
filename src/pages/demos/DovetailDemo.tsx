@@ -23,8 +23,9 @@ function NotFound() {
 }
 export default function DovetailDemo() {
   const location = useLocation();
-  const product = PRODUCTS.find(p => location.pathname === `/our-work/dovetail-demo/product/${p.id}`);
-  const title = product?.name || (location.pathname.endsWith("/story") ? "About the studio" : location.pathname.endsWith("/help") ? "Help" : location.pathname.endsWith("/checkout") ? "Checkout preview" : "A wardrobe that works together");
+  const pathname = location.pathname.replace(/\/$/, "");
+  const product = PRODUCTS.find(p => pathname === `/our-work/dovetail-demo/product/${p.id}`);
+  const title = product?.name || (pathname.endsWith("/story") ? "About the studio" : pathname.endsWith("/help") ? "Help" : pathname.endsWith("/checkout") ? "Checkout preview" : "");
   useEffect(() => {
     if (location.state?.preserveScroll) return;
     const frame = requestAnimationFrame(() => {
@@ -37,12 +38,11 @@ export default function DovetailDemo() {
   }, [location.key, location.hash, location.state]);
   return <><BackToZerra /><div id="dovetail-root" className="dovetail-demo">
     <Helmet>
-      <title>{title} | DOVETAIL — Zerra concept</title>
+      <title>Dovetail{title ? ` — ${title}` : ""} | Zerra Studios Concept</title>
       <meta name="description" content={product?.description || "Relaxed shapes. A wardrobe that works together. Dovetail is a fictional brand and website concept by Zerra Studios."} />
       <meta name="robots" content="noindex, nofollow" />
       <meta property="og:title" content="DOVETAIL — A Zerra Studios concept" />
       <meta property="og:image" content="/demos/dovetail/preview.webp" />
-      <link rel="icon" href="/demos/dovetail/dovetail.svg" />
     </Helmet>
     <CartProvider><Routes>
       <Route index element={<Home />} /><Route path="story" element={<Story />} />

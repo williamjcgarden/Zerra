@@ -1,3 +1,4 @@
+import RouteFavicons from "@/components/RouteFavicons";
 import { Suspense, useEffect } from "react";
 import { BrowserRouter, useLocation, useRoutes } from "react-router-dom";
 import { HelmetProvider, type HelmetServerState } from "react-helmet-async";
@@ -54,6 +55,7 @@ const AnimatedRoutes = () => {
 
   return (
     <>
+      <RouteFavicons />
       <ScrollToRoute />
       <AnimatePresence mode="wait" initial={false}>
         <m.div

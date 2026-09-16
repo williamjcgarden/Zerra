@@ -1,9 +1,11 @@
+import BackToZerra from "@/components/BackToZerra";
+import "@/components/demo-context.css";
 import { useEffect, useState } from "react";
 import { Link, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import {
   ArrowRight, Sprout, Hammer, PencilRuler, Repeat, Star,
-  Award, Gem, HeartHandshake, ArrowLeft, ChevronLeft, ChevronRight, Leaf,
+  Award, Gem, HeartHandshake, ChevronLeft, ChevronRight, Leaf,
 } from "lucide-react";
 import "@/demos/landscaping/landscaping.css";
 import "@/demos/landscaping/landscaping-journeys.css";
@@ -332,9 +334,11 @@ const LandscapingDemo = () => {
     else window.scrollTo(0, 0);
   }, [location.pathname, location.hash]);
   const pathname = location.pathname.replace(/\/$/, "");
-  const title = pathname.endsWith("/services") ? "Services" : pathname.endsWith("/get-a-quote") ? "Get a Quote" : "Landscaping Website Concept";
+  const title = pathname.endsWith("/services") ? "Services" : pathname.endsWith("/get-a-quote") ? "Get a Quote" : "";
 
   return (
+    <>
+    <BackToZerra />
     <div className="landscaping-demo">
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
@@ -342,8 +346,8 @@ const LandscapingDemo = () => {
         href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap"
         rel="stylesheet"
       />
-      <Helmet><title>{title} | Verdant by Zerra Studios</title><meta name="robots" content="noindex,nofollow" /></Helmet>
-      <div className="landscaping-concept-bar"><span>Fictional brand · Website concept by Zerra Studios</span><Link to="/our-work"><ArrowLeft size={13} />Back to Zerra</Link></div>
+      <Helmet><title>Verdant{title ? ` — ${title}` : ""} | Zerra Studios Concept</title><meta name="robots" content="noindex,nofollow" /></Helmet>
+      <div className="landscaping-concept-bar zerra-demo-context"><span>Fictional brand &amp; website concept by Zerra Studios</span></div>
       <Nav onDemoAction={openQuote} />
       <main><Routes>
         <Route index element={<><Hero onDemoAction={openQuote} /><Services /><Portfolio /><WhyUs /><Team /><Testimonials /><CTA onDemoAction={openQuote} /></>} />
@@ -353,6 +357,7 @@ const LandscapingDemo = () => {
       </Routes></main>
       <LandscapingFooter />
     </div>
+    </>
   );
 };
 

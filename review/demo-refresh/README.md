@@ -26,3 +26,5 @@ They cover preselection, multi-step form navigation, edit/restart, simulated com
 Use the built Cloudflare runtime for acceptance. The Vite-only preview serves the source HTML marker and can log development hydration warnings that do not represent the prerendered deployment; it also does not serve the standalone Royal Cuts directory entry.
 
 The audit records existing color-contrast findings on the preserved Verdant homepage separately; these do not block the narrow button/disclosure update. New destination pages must pass every enabled axe rule. This is not a claim of full-site accessibility compliance.
+
+`node review/demo-refresh/navigation.cjs` compares all four disclosure bars with Dovetail, tests hover/keyboard expansion and return navigation, and verifies brand-first titles, a single demo favicon and restoration of Zerra's icons at 1440/768/390/320px.

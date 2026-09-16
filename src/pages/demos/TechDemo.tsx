@@ -1,3 +1,5 @@
+import BackToZerra from "@/components/BackToZerra";
+import "@/components/demo-context.css";
 import "@/demos/tech/tech.css";
 import { useEffect } from "react";
 import { Link, Route, Routes, useLocation } from "react-router-dom";
@@ -334,15 +336,14 @@ function TechDemo() {
     return () => window.clearTimeout(timer);
   }, [pathname, hash]);
   return (
+    <>
+    <BackToZerra />
     <div className="tech-demo bg-black">
       <Helmet>
-        <title>{path.endsWith("/get-started") ? "Get Started" : "StartUp"} | Fictional concept by Zerra Studios</title>
+        <title>StartUp{path.endsWith("/get-started") ? " — Get Started" : ""} | Zerra Studios Concept</title>
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
-      <div className="tech-concept-bar">
-        <span>Fictional brand. Website concept by <Link to="/">Zerra Studios</Link>.</span>
-        <Link to="/our-work">← Back to our work</Link>
-      </div>
+      <div className="tech-concept-bar zerra-demo-context"><span>Fictional brand &amp; website concept by Zerra Studios</span></div>
       <main>
         <Routes>
           <Route index element={<TechHome />} />
@@ -352,6 +353,7 @@ function TechDemo() {
       </main>
       <TechFooter />
     </div>
+    </>
   );
 }
 
