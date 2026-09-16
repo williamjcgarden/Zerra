@@ -1,13 +1,14 @@
 import BackToZerra from "@/components/BackToZerra";
 import "@/components/demo-context.css";
 import "@/demos/tech/tech.css";
-import { useEffect } from "react";
+import { lazy, useEffect } from "react";
 import { Link, Route, Routes, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { GetStarted } from "@/demos/tech/components/GetStarted";
 import { AnimatedHeading } from "@/demos/tech/components/AnimatedHeading";
 import { FadeIn } from "@/demos/tech/components/FadeIn";
 import techMobileHero from "@/demos/tech/assets/tech-demo-mobile-hero.png";
+
+const GetStarted = lazy(() => import("@/demos/tech/components/GetStarted").then(module => ({ default: module.GetStarted })));
 
 const HOME = "/our-work/tech-demo";
 const START = `${HOME}/get-started`;
@@ -236,8 +237,8 @@ function Testimonials() {
 function FAQ() {
   const items = [
     { q: "Is StartUp a real software service?", a: "No. StartUp is a fictional brand and website concept by Zerra Studios. The product features, plans, testimonials and businesses shown are illustrative, not real offers, certifications or customer results." },
-    { q: "What happens when I get started?", a: "You choose a workflow, team size and illustrative plan, then try a sample task checklist. No real account, free trial, payment or invitation is created." },
-    { q: "Will my information be saved?", a: "No workspace information is submitted or saved remotely. Use a made-up workspace name. Your preview resets when you leave the page or reload." },
+    { q: "What happens when I get started?", a: "You choose sample tools, select an automation outcome and run a sample event. The preview shows a trigger, an example AI summary and the resulting Slack message. No real tools are connected or messages sent." },
+    { q: "Will my information be saved?", a: "No. The walkthrough uses prepared sample data and does not ask for account credentials or personal information. Your example resets when you leave the page or reload." },
     { q: "Can I enquire about a website like this?", a: "Yes. Use the Zerra Studios enquiry link in the footer to discuss your own website. That takes you to the real studio website." },
   ];
   return (
@@ -268,7 +269,7 @@ function CTA() {
     <section className="bg-black text-white py-24 md:py-32 border-t border-white/10">
       <div className="max-w-4xl mx-auto px-6 md:px-12 lg:px-16 text-center liquid-glass rounded-3xl py-16 md:py-24">
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-normal mb-6 text-white" style={{ letterSpacing: "-0.04em" }}>Start building in minutes.</h2>
-        <p className="text-gray-300 max-w-xl mx-auto mb-8">Explore the StartUp concept with a sample workspace. No account or payment required.</p>
+        <p className="text-gray-300 max-w-xl mx-auto mb-8">Explore the StartUp concept with a sample automation. No account or payment required.</p>
         <div className="flex flex-wrap gap-4 justify-center">
           <Link to={START} className="bg-white text-black px-8 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors">Start free trial</Link>
           <Link to={`${START}?plan=enterprise`} className="border border-white/20 text-white px-8 py-3 rounded-lg font-medium hover:bg-white hover:text-black transition-colors">Explore Enterprise</Link>
