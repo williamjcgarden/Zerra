@@ -59,6 +59,7 @@
 .tech-demo .tech-signup-plan li { display:flex; align-items:flex-start; gap:8px; font-size:12px; line-height:1.6; margin-bottom:12px; }
 .tech-demo .tech-signup-plan li svg { flex-shrink:0; margin-top:3px; }
 .tech-demo .tech-signup-plan > button { display:flex; justify-content:space-between; align-items:center; gap:8px; min-height:46px; border-radius:7px; padding:10px 12px; background:white; color:black; font-size:12px; font-weight:500; }
+.tech-demo .tech-signup-plan > button:disabled { opacity:.45; cursor:wait; }
 .tech-demo .tech-signup-plan-featured { background:white; color:black; }
 .tech-demo .tech-signup-plan-featured > p { color:#4b5563; }
 .tech-demo .tech-signup-plan-featured > button { background:black; color:white; }

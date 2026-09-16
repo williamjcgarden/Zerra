@@ -14,6 +14,7 @@ export function GetStarted() {
   const { search } = useLocation();
   const [planName, setPlanName] = useState("Starter");
   const [step, setStep] = useState(1);
+  const [ready, setReady] = useState(false);
   const [seats, setSeats] = useState("1");
   const [selectedWorkflows, setSelectedWorkflows] = useState([workflows[0].name]);
   const heading = useRef<HTMLHeadingElement>(null);
@@ -28,6 +29,7 @@ export function GetStarted() {
     setPlanName(match?.name || "Starter");
     setSeats("1"); setSelectedWorkflows([workflows[0].name]);
     setStep(match ? 2 : 1);
+    setReady(true);
   }, [search]);
   useEffect(() => {
     if (shouldFocus.current) heading.current?.focus();
@@ -65,7 +67,7 @@ export function GetStarted() {
           <h2>{item.name}</h2><p>{item.tagline}</p>
           <div className="tech-plan-price">{item.price}{item.price !== "Custom" && <span>/mo</span>}</div>
           <ul>{item.features.map(feature => <li key={feature}><Check size={14} aria-hidden="true" />{feature}</li>)}</ul>
-          <button type="button" onClick={() => choosePlan(item.name)}>Choose {item.name} <ArrowRight size={16} /></button>
+          <button type="button" disabled={!ready} onClick={() => choosePlan(item.name)}>Choose {item.name} <ArrowRight size={16} /></button>
         </article>)}
       </div>}
 
