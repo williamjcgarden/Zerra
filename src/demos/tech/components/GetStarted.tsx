@@ -32,7 +32,10 @@ export function GetStarted() {
     setReady(true);
   }, [search]);
   useEffect(() => {
-    if (shouldFocus.current) heading.current?.focus();
+    if (shouldFocus.current) {
+      heading.current?.focus({ preventScroll: step === 4 });
+      if (step === 4) window.scrollTo({ top: 0, behavior: "instant" });
+    }
   }, [step]);
 
   function goTo(next: number) {
@@ -48,18 +51,36 @@ export function GetStarted() {
     setSelectedWorkflows(current => current.includes(name) ? current.filter(item => item !== name) : [...current, name]);
   }
 
+  if (step === 4) return (
+    <section className="tech-setup tech-setup-complete text-white">
+      <div className="tech-demo-finish">
+        <div className="tech-finish-header"><span>StartUp</span><span><Check size={14} aria-hidden="true" />Preview complete</span></div>
+        <div className="tech-finish-content">
+          <h1 ref={heading} tabIndex={-1}>This is just a demo.</h1>
+          <p>Talk to Zerra if you want to build your own software site.</p>
+          <div className="tech-setup-actions">
+            <Link className="tech-primary-action" to="/?enquiry=website">Talk to Zerra <ArrowRight size={18} aria-hidden="true" /></Link>
+            <Link className="tech-finish-back" to={HOME}>Back to StartUp</Link>
+          </div>
+        </div>
+        <p className="tech-finish-note">No trial has been started, and nothing has been charged.</p>
+      </div>
+      <p className="tech-finish-credit">A website concept by <Link to="/">Zerra Studios</Link></p>
+    </section>
+  );
+
   return (
     <section className="tech-setup text-white">
       <Link to={HOME} className="tech-setup-back">← Back to StartUp</Link>
       <p className="tech-setup-kicker">Get Started · Signup preview</p>
-      {step < 4 && <ol className="tech-onboarding-steps" aria-label="Signup progress">
+      <ol className="tech-onboarding-steps" aria-label="Signup progress">
         {["Choose plan", "Workflows & seats", "Start trial"].map((label, index) => <li key={label} aria-current={step === index + 1 ? "step" : undefined}><span>{step > index + 1 ? <Check size={14} aria-hidden="true" /> : index + 1}</span>{label}</li>)}
-      </ol>}
+      </ol>
       <h1 ref={heading} tabIndex={-1} className="text-4xl md:text-5xl font-normal mb-5" style={{ letterSpacing: "-0.04em" }}>
-        {step === 1 ? "Simple plans. Honest pricing." : step === 2 ? "Set up your workflows and seats." : step === 3 ? "Start your trial." : "This is just a demo."}
+        {step === 1 ? "Simple plans. Honest pricing." : step === 2 ? "Set up your workflows and seats." : "Start your trial."}
       </h1>
       <p className="text-gray-300 mb-8 tech-setup-intro">
-        {step === 1 ? "Choose a plan to get started." : step === 2 ? "Choose what you want to automate and how many people will use your workspace." : step === 3 ? "Review your selections before you start." : "Talk to Zerra if you want to build your own software site."}
+        {step === 1 ? "Choose a plan to get started." : step === 2 ? "Choose what you want to automate and how many people will use your workspace." : "Review your selections before you start."}
       </p>
 
       {step === 1 && <div className="tech-signup-plans">
@@ -92,11 +113,7 @@ export function GetStarted() {
         <div className="tech-setup-actions"><button type="button" className="tech-primary-action" onClick={() => goTo(4)}>Start trial <ArrowRight size={17} /></button><button type="button" onClick={() => goTo(2)}>Edit setup</button></div>
       </div>}
 
-      {step === 4 && <div className="tech-demo-finish">
-        <p>No trial has been started, and nothing has been charged.</p>
-        <div className="tech-setup-actions"><Link className="tech-primary-action" to="/?enquiry=website">Talk to Zerra <ArrowRight size={17} /></Link><Link to={HOME}>Back to StartUp</Link></div>
-      </div>}
-      {step < 4 && <p className="text-sm text-gray-400 mt-8">Illustrative plans and pricing. Your selections are not saved.</p>}
+      <p className="text-sm text-gray-400 mt-8">Illustrative plans and pricing. Your selections are not saved.</p>
     </section>
   );
 }

@@ -48,6 +48,7 @@ const out = process.env.EVIDENCE_DIR || 'output/startup-signup';
         if(plan==='Growth') await page.screenshot({ path: `${out}/trial-${width}.png`, fullPage: true });
         await page.getByRole('button', { name: 'Start trial', exact: true }).click();
         await expect(page.getByRole('heading', { name: 'This is just a demo.', level: 1 })).toBeFocused();
+        await expect.poll(() => page.evaluate(() => scrollY)).toBe(0);
         await expect(page.getByText('Talk to Zerra if you want to build your own software site.', { exact: true })).toBeVisible();
         await expect(page.getByRole('link', { name: 'Talk to Zerra', exact: true })).toHaveAttribute('href', '/?enquiry=website');
         await expect(page.locator('.tech-demo-finish')).toContainText('No trial has been started');

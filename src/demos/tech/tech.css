@@ -90,8 +90,36 @@
 .tech-demo .tech-trial-review dd ul { list-style:none; padding:0; margin:0; }
 .tech-demo .tech-trial-review dd li + li { margin-top:8px; }
 .tech-demo .tech-trial-note { color:#b8bec8; font-size:12px; line-height:1.7; margin:20px 0; }
-.tech-demo .tech-demo-finish { border-top:1px solid #ffffff25; padding-top:28px; }
-.tech-demo .tech-demo-finish > p { color:#b8bec8; font-size:14px; margin-bottom:24px; }
+.tech-demo .tech-setup-complete { width:min(720px, calc(100% - 48px)); min-height:0; padding:80px 0 72px; }
+.tech-demo .tech-demo-finish { background:#0c0c0c; border:1px solid #ffffff25; border-radius:16px; }
+.tech-demo .tech-finish-header { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:24px 40px; border-bottom:1px solid #ffffff1a; }
+.tech-demo .tech-finish-header > span:first-child { font-size:19px; font-weight:500; letter-spacing:-.04em; }
+.tech-demo .tech-finish-header > span:last-child { display:flex; align-items:center; gap:8px; color:#b8bec8; font-size:12px; }
+.tech-demo .tech-finish-content { padding:48px 40px 40px; }
+.tech-demo .tech-finish-content h1 { font-size:48px; font-weight:400; line-height:1.12; letter-spacing:-.04em; text-wrap:balance; }
+.tech-demo .tech-finish-content > p { max-width:40ch; margin:20px 0 32px; color:#b8bec8; font-size:18px; line-height:1.65; text-wrap:pretty; }
+.tech-demo .tech-finish-content .tech-primary-action { min-height:52px; gap:24px; padding-inline:24px; font-size:15px; }
+.tech-demo .tech-finish-back { color:#b8bec8; text-decoration:underline; text-underline-offset:5px; text-decoration-color:#ffffff40; }
+.tech-demo .tech-finish-back:hover { color:white; text-decoration-color:currentColor; }
+.tech-demo .tech-finish-note { margin:0; padding:22px 40px; border-top:1px solid #ffffff1a; color:#a5acb7; font-size:13px; line-height:1.7; }
+.tech-demo .tech-finish-credit { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:0 4px; margin:20px 0 0; color:#a5acb7; font-size:12px; }
+.tech-demo .tech-finish-credit a { display:inline-flex; align-items:center; min-height:44px; color:#d1d5db; text-decoration:underline; text-underline-offset:4px; }
+.tech-demo .tech-finish-content a { transition:background-color 180ms ease-out, color 180ms ease-out; }
+@media (prefers-reduced-motion: no-preference) {
+  .tech-demo .tech-demo-finish { animation:tech-finish-arrive 240ms cubic-bezier(.22,1,.36,1) both; }
+  @keyframes tech-finish-arrive { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+}
+@media (max-width: 560px) {
+  .tech-demo .tech-setup-complete { width:calc(100% - 40px); padding:48px 0 40px; }
+  .tech-demo .tech-finish-header { padding:20px; gap:12px; }
+  .tech-demo .tech-finish-header > span:last-child { gap:6px; font-size:11px; }
+  .tech-demo .tech-finish-content { padding:32px 20px 24px; }
+  .tech-demo .tech-finish-content h1 { font-size:36px; }
+  .tech-demo .tech-finish-content > p { font-size:16px; margin:16px 0 24px; }
+  .tech-demo .tech-finish-content .tech-setup-actions { flex-direction:column; gap:8px; }
+  .tech-demo .tech-finish-content .tech-primary-action { width:100%; justify-content:space-between; }
+  .tech-demo .tech-finish-note { padding:20px; font-size:12px; }
+}
 @media (max-width: 700px) {
   .tech-demo .tech-signup-plans { grid-template-columns:1fr; }
   .tech-demo .tech-signup-plan > p { min-height:0; margin-bottom:16px; }
