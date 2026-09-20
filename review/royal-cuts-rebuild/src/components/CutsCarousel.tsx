@@ -55,9 +55,8 @@ export default function CutsCarousel({motionOn,onSelect}:{motionOn:boolean;onSel
  },[canAnimate,paused,hovered,focused,visible,pageVisible,perView]);
  return <div className={`cuts-carousel${canAnimate?'':' cuts-carousel-static'}`} role="region" aria-label="Haircut styles" aria-roledescription="carousel">
   <div className="cuts-carousel-tools">
-   <span className="cuts-progress">{String(start+1).padStart(2,'0')} / {looks.length} CUTS</span>
    <div className="cuts-carousel-actions">
-    {canAnimate&&<button className="round-button" onClick={()=>setPaused(value=>!value)} aria-label={paused?'Play cuts carousel':'Pause cuts carousel'}>{paused?<Play size={16}/>:<Pause size={16}/>}</button>}
+    {canAnimate&&<button className="cuts-pause" onClick={()=>setPaused(value=>!value)} aria-label={paused?'Play cuts carousel':'Pause cuts carousel'}>{paused?<Play size={16}/>:<Pause size={16}/>}</button>}
    </div>
   </div>
   <div className="cuts-viewport" ref={viewport} onMouseEnter={()=>setHovered(true)} onMouseLeave={()=>setHovered(false)} onFocusCapture={()=>setFocused(true)} onBlurCapture={event=>{if(!event.currentTarget.contains(event.relatedTarget as Node|null))setFocused(false);}}>
@@ -69,7 +68,7 @@ export default function CutsCarousel({motionOn,onSelect}:{motionOn:boolean;onSel
      return <article className="look-card" key={look.title} aria-hidden={!shown}>
       <button className="look-image-button" onClick={()=>onSelect(index)} aria-label={`Explore ${look.title}`} tabIndex={!canAnimate||offset<perView?0:-1}>
        <div className="look-photo" style={{backgroundPosition:look.position,backgroundImage:look.image?`url(${look.image})`:undefined,backgroundSize:look.backgroundSize}} role="img" aria-label={`${look.title} — ${look.type}`}/>
-       <span className="look-number">{String(index+1).padStart(2,'0')}</span><span className="look-expand"><Plus size={23}/></span>
+       <span className="look-expand"><Plus size={23}/></span>
       </button>
       <div className="look-caption"><h3>{look.title}</h3><span>{look.type}</span></div>
      </article>;

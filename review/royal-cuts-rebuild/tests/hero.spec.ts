@@ -55,8 +55,8 @@ test('layered hero entrance settles once and respects reduced motion',async({pag
  for(const width of [390,1440]){
   await page.setViewportSize({width,height:1000});await page.emulateMedia({reducedMotion:'no-preference'});await page.goto(process.env.DEMO_PATH||'/');
   const elements='.hero h1>span,.hero-pole,.hero-photo,.hero-description,.hero-copy>p:nth-child(2),.hero-copy>.button,.hero-secondary,.hero-seal,.hero-bottom';
-  const entrance=await page.locator(elements).evaluateAll(els=>els.map(el=>({name:getComputedStyle(el).animationName,duration:getComputedStyle(el).animationDuration,clip:getComputedStyle(el).clipPath})));
-  expect(entrance.every(el=>el.name.startsWith('hero-'))).toBe(true);expect(entrance.every(el=>el.clip==='none')).toBe(true);
+  const entrance=await page.locator(elements).evaluateAll(els=>els.map(el=>({name:getComputedStyle(el).animationName,duration:getComputedStyle(el).animationDuration,clip:getComputedStyle(el).clipPath,isPhoto:el.classList.contains('hero-photo')})));
+  expect(entrance.every(el=>el.name.startsWith('hero-'))).toBe(true);expect(entrance.every(el=>el.isPhoto?el.clip.startsWith('inset('):el.clip==='none')).toBe(true);
   await expect(page.locator('.hero')).not.toHaveClass(/hero-intro/);
   const settled=await page.locator(elements).evaluateAll(els=>els.map(el=>({opacity:getComputedStyle(el).opacity,animation:getComputedStyle(el).animationName})));
   expect(settled.every(el=>el.opacity==='1'&&el.animation==='none')).toBe(true);
