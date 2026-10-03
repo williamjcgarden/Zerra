@@ -21,6 +21,7 @@ const sections = [
       <ul className="list-disc list-inside space-y-2">
         <li>Contact form details: name, email address, message, optional business name, and project budget when requesting a quote</li>
         <li>Scheduling details you choose to provide through Calendly</li>
+        <li>Phone calls to our AI phone line: a recording and transcript of the call, your phone number, and any details you give, such as your name, email address and preferred meeting time</li>
         <li>Basic technical data, such as IP address, browser type, device type, and requested pages, processed by our hosting and content-delivery providers</li>
       </ul>
     ),
@@ -31,6 +32,7 @@ const sections = [
       <ul className="list-disc list-inside space-y-2">
         <li>To respond to your enquiries submitted via the contact form</li>
         <li>To prepare quotes and schedule consultations you request</li>
+        <li>To answer phone calls, book consultations and call you back, and to review calls for quality assurance. Callers are told at the start of each call that it may be recorded</li>
         <li>To operate, secure, troubleshoot, and improve our website</li>
         <li>To comply with legal obligations and protect our legitimate business interests</li>
       </ul>
@@ -44,6 +46,8 @@ const sections = [
         <ul className="list-disc list-inside space-y-2">
           <li>Formspree processes contact form submissions and delivers them to our business email</li>
           <li>Calendly processes scheduling information when you choose to book a consultation</li>
+          <li>Vapi answers our phone line and stores call recordings and transcripts</li>
+          <li>Google Calendar holds consultations booked through our phone line</li>
           <li>Cloudflare hosts and protects the website and may process security and request logs</li>
           <li>Google Fonts delivers website fonts and receives basic request information</li>
           <li>Amazon CloudFront delivers selected website media and receives basic request information</li>
@@ -68,7 +72,8 @@ const sections = [
       <p>
         We retain contact form submissions and related business email for up to 12 months unless
         the information is needed for an active client relationship, legal requirement, or dispute.
-        We then delete or anonymize it. Scheduling information is retained according to our Calendly
+        We then delete or anonymize it. Call recordings and transcripts are kept for up to 12 months and
+        then deleted. Scheduling information is retained according to our Calendly
         settings and the provider's policy. You may request earlier deletion using the contact details below.
       </p>
     ),
@@ -159,7 +164,7 @@ const PrivacyPolicy = () => {
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
             Privacy <span className="text-gradient-gold">Policy</span>
           </h1>
-          <p className="text-sm text-muted-foreground">Last updated: August 2026</p>
+          <p className="text-sm text-muted-foreground">Last updated: October 2026</p>
         </div>
 
         <div className="space-y-10">

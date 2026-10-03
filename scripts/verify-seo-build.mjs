@@ -23,6 +23,7 @@ assert.match(wrangler, /"html_handling": "auto-trailing-slash"/);
 for (const file of [
   "dist/privacy-policy.html",
   "dist/terms-of-service.html",
+  "dist/client-terms.html",
   "dist/our-work/barbershop-demo.html",
 ]) assert.match(await read(file), /<div id="root">/);
 

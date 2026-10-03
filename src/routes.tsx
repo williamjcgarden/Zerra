@@ -16,6 +16,7 @@ export const DOVETAIL_PRODUCT_IDS = [
 const Index = lazy(() => import("./pages/Index.tsx"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy.tsx"));
 const TermsOfService = lazy(() => import("./pages/TermsOfService.tsx"));
+const ClientTerms = lazy(() => import("./pages/ClientTerms.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 const BarbershopDemo = lazy(() => import("./pages/demos/BarbershopDemo.tsx"));
 const LandscapingDemo = lazy(() => import("./pages/demos/LandscapingDemo.tsx"));
@@ -36,6 +37,7 @@ export const PUBLIC_PRERENDER_PATHS = [
   "/process",
   "/privacy-policy",
   "/terms-of-service",
+  "/client-terms",
   "/our-work",
   "/our-work/barbershop-demo",
   "/our-work/landscaping-demo",
@@ -54,6 +56,7 @@ export const APP_ROUTES: RouteObject[] = [
   { path: "/", element: <Index /> },
   { path: "/privacy-policy", element: <PrivacyPolicy /> },
   { path: "/terms-of-service", element: <TermsOfService /> },
+  { path: "/client-terms", element: <ClientTerms /> },
   ...Object.keys(SECTION_ROUTE_IDS).map((path) => ({ path, element: <Index /> })),
   { path: "/our-work/barbershop-demo", element: <BarbershopDemo /> },
   { path: "/our-work/landscaping-demo/*", element: <LandscapingDemo /> },

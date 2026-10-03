@@ -21,7 +21,14 @@ const sections = [
       <p>
         Zerra Studios provides creative and digital services including branding, web design, and
         motion. These terms govern your use of our website only — they do not govern any specific
-        client engagement. Project work is subject to separate client agreements.
+        client engagement. Project work is subject to our{" "}
+        <a
+          href="/client-terms"
+          className="text-primary underline underline-offset-4 hover:text-primary/80 transition-colors"
+        >
+          Client Terms
+        </a>
+        .
       </p>
     ),
   },
@@ -145,7 +152,7 @@ const TermsOfService = () => {
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
             Terms of <span className="text-gradient-gold">Service</span>
           </h1>
-          <p className="text-sm text-muted-foreground">Last updated: April 2026</p>
+          <p className="text-sm text-muted-foreground">Last updated: October 2026</p>
         </div>
 
         <div className="space-y-10">

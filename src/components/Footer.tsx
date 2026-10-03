@@ -18,12 +18,15 @@ const Footer = () => {
           Instagram
         </a>
 
-        <div className="flex gap-6 items-center">
-          <a href="/privacy-policy" className="text-xs text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wider">
+        <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 items-center">
+          <a href="/privacy-policy" className="text-xs text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wider whitespace-nowrap">
             Privacy Policy
           </a>
-          <a href="/terms-of-service" className="text-xs text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wider">
+          <a href="/terms-of-service" className="text-xs text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wider whitespace-nowrap">
             Terms of Service
+          </a>
+          <a href="/client-terms" className="text-xs text-muted-foreground hover:text-foreground transition-colors uppercase tracking-wider whitespace-nowrap">
+            Client Terms
           </a>
         </div>
       </div>
