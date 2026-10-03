@@ -194,27 +194,28 @@ const ClientTerms = () => {
       <AtmosphericBg intensity={0.8} />
       <Navbar />
 
-      <main className="max-w-3xl mx-auto px-6 md:px-8 pt-36 pb-24">
+      {/* Same white text and dark shadow as the hero subtitle, so text stays readable over the animated background. */}
+      <main className="max-w-3xl mx-auto px-6 md:px-8 pt-36 pb-24" style={{ textShadow: "0 1px 2px rgba(0, 0, 0, 0.95), 0 4px 16px rgba(0, 0, 0, 0.72)" }}>
         <div className="mb-12">
-          <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mb-4">
+          <p className="text-xs uppercase tracking-[0.3em] text-white/90 mb-4">
             Legal
           </p>
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-            Client <span className="text-gradient-gold">Terms</span>
+            Client <span className="text-gradient-gold" style={{ textShadow: "none" }}>Terms</span>
           </h1>
-          <p className="text-sm text-muted-foreground">Last updated: October 2026</p>
+          <p className="text-sm text-white/90">Last updated: October 2026</p>
         </div>
 
         <div className="space-y-10">
           {sections.map(({ title, content }, i) => (
             <section key={title} className="border-t border-border/50 pt-8">
               <h2 className="text-lg font-semibold tracking-tight mb-3">
-                <span className="text-muted-foreground/50 text-sm font-normal mr-3 tabular-nums">
+                <span className="text-white/60 text-sm font-normal mr-3 tabular-nums">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 {title}
               </h2>
-              <div className="text-muted-foreground text-sm leading-relaxed">{content}</div>
+              <div className="text-white/90 text-sm leading-relaxed">{content}</div>
             </section>
           ))}
         </div>
