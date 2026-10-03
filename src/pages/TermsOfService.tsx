@@ -171,7 +171,7 @@ const TermsOfService = () => {
         </div>
 
         <div className="mt-16 text-center">
-          <a href="/" className="btn-gold text-xs px-8 py-3 inline-block">
+          <a href="/" className="btn-gold text-xs px-8 py-3 inline-block" style={{ textShadow: "none" }}>
             Back to Home
           </a>
         </div>
