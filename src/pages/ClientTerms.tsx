@@ -164,8 +164,8 @@ const sections = [
       <p>
         Calls start by telling callers they may be recorded for quality assurance. Zerra confirms
         any change to your agent with you before it goes live, and you test the agent before your
-        number is switched on. Recordings and transcripts are stored by Zerra's voice provider,
-        Vapi, which may store them outside Canada, and are used only to run and improve your agent.
+        number is switched on. Recordings and transcripts are stored by Zerra's voice provider
+        for client agents, Retell AI, which may store them outside Canada, and are used only to run and improve your agent.
         Your own privacy policy should tell customers that calls are recorded and why. Scope and
         price are on your invoice.
       </p>
